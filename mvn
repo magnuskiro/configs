@@ -1,8 +1,4 @@
 # Bash Maven completion
-# 
-# Linux mint: put this file in /usr/share/bash-completion/completions/
-
-
 
 : <<'END'
 
