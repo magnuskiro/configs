@@ -47,11 +47,11 @@ if [ -d /etc/profile.d ]; then
   unset i
 fi
 
-export JAVA_HOME=/usr/lib/jvm/jdk1.7.0/jre
+export JAVA_HOME=/usr/lib/jvm/jdk1.7.0
 export JDK_HOME=/usr/lib/jvm/jdk1.7.0/bin
 export M2_HOME=/usr/local/apache-maven/apache-maven-3.0.4
 export M2=$M2_HOME/bin
-export IDEA=/usr/local/idea/bin/
+export IDEA=/usr/local/idea/bin
 
 export PATH=$PATH:$M2_HOME:$M2:$JAVA_HOME:$JDK_HOME:$IDEA
 
