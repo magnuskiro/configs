@@ -6,12 +6,15 @@
 
 : <<'END'
 
+Current folders for Linux Mint Debian. 
+The folders have to be changed for other distributions.
+
 cd /usr/share/bash-completion/completions/
 sudo ln -s /home/kiro/repos/configs/mvn mvn
 
 END
 
-#
+# start autocomplete code. 
 _mvn()
 {
    local cmds cur colonprefixes
