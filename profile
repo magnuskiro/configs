@@ -12,6 +12,18 @@
 # /etc/profile: system-wide .profile file for the Bourne shell (sh(1))
 # and Bourne compatible shells (bash(1), ksh(1), ash(1), ...).
 
+: <<'END'
+
+Current folders for Linux Mint Debian. 
+The folders have to be changed for other distributions.
+
+cd /etc/
+rm profile
+sudo ln -s /home/kiro/repos/configs/profile profile
+
+END
+
+
 if [ "`id -u`" -eq 0 ]; then
   PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 else
@@ -47,6 +59,7 @@ if [ -d /etc/profile.d ]; then
   unset i
 fi
 
+# extra path variables for development and such. 
 export JAVA_HOME=/usr/lib/jvm/jdk1.7.0
 export JDK_HOME=/usr/lib/jvm/jdk1.7.0/bin
 export M2_HOME=/usr/local/apache-maven/apache-maven-3.0.4
