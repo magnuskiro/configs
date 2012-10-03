@@ -51,3 +51,6 @@ fi
 
 # Try to keep environment pollution down, EPA loves us.
 unset use_color safe_term match_lhs
+
+
+# TODO: Add colors for output. So that "cat color.bashrc" is printed in colour. 
