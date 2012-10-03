@@ -1,3 +1,4 @@
+#!/bin/sh
 # Bash Maven completion
 
 : <<'END'
