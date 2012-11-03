@@ -1,4 +1,4 @@
-###
+#
 # This a customized /etc/profile file. It's used the same way as /etc/environment and bashrc in many cases.
 # I removed it from /etc/ and added it to my git repo. 
 # 
@@ -22,7 +22,6 @@ rm profile
 sudo ln -s /home/kiro/repos/configs/profile profile
 
 END
-
 
 if [ "`id -u`" -eq 0 ]; then
   PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
@@ -68,5 +67,3 @@ export IDEA=/usr/local/idea/bin
 
 export PATH=$PATH:$M2_HOME:$M2:$JAVA_HOME:$JDK_HOME:$IDEA
 
-# Aliases
-alias l='ls -lsah'
