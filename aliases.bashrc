@@ -10,6 +10,9 @@ END
 # Aliases
 alias h="history"
 alias l="ls -lsah"
-alias gits="git status"
-alias gitc="git commit -am" 
 alias cd..="cd .."
+
+# git aliases 
+alias gits="git status"
+#alias gitc="git commit -am '"$_"'" 
+alias gitc="git commit -am" 
