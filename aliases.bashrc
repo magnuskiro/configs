@@ -16,3 +16,9 @@ alias cd..="cd .."
 alias gits="git status"
 #alias gitc="git commit -am '"$_"'" 
 alias gitc="git commit -am" 
+
+# ack-grep
+alias a="ack-grep --color"
+
+# fortune 
+/usr/games/fortune
