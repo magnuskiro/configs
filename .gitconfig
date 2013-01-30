@@ -1,0 +1,21 @@
+[user]
+	name = Magnus Kirø
+	email = magnuskiro@gmail.com
+[credential]
+	helper = cache --timeout=3600
+[push]
+    default = upstream
+[color]
+    status = auto
+    branch = auto
+    ui = always
+[core]
+    editor = vim
+[alias]
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    lg = log -p
+    who = shortlog -s --
