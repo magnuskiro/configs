@@ -1,3 +1,6 @@
+# Execute cmd to configure git. 
+# ln -s ~/repos/configs/.gitconfig ~/.gitconfig
+#
 [user]
 	name = Magnus Kirø
 	email = magnuskiro@gmail.com
