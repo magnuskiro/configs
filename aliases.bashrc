@@ -20,5 +20,8 @@ alias gitc="git commit -am"
 # ack-grep
 alias a="ack-grep --color"
 
+# xfce4-display
+alias x="xfce4-display-settings"
+
 # fortune 
 /usr/games/fortune

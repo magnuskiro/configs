@@ -15,8 +15,11 @@
 [core]
     editor = vim
 [alias]
+	pl = pull
+	ps = push
     st = status
-    ci = commit
+    cm = commit -m
+	ca = commit -am
     br = branch
     co = checkout
     df = diff
