@@ -2,14 +2,14 @@
 : <<'END'
 
 Append 
-"source /home/kiro/repos/configs/aliases.bashrc"
+"source ~/repos/configs/aliases.bashrc"
 to /etc/bash.bashrc
 
 END
 
 # Aliases
 alias h="history"
-alias l="ls -lsah"
+alias l='ls -lashF --color --show-control-chars'
 alias cd..="cd .."
 
 # git aliases 
