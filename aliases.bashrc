@@ -7,6 +7,10 @@ to /etc/bash.bashrc
 
 END
 
+# append to bash rc.
+# probably works for personal bash.bashrc files.  
+#echo 'source ~/repos/configs/aliases.bashrc' >> /etc/bash.bashrc
+
 # Aliases
 alias h="history"
 alias l='ls -lashF --color --show-control-chars'
