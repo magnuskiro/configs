@@ -6,12 +6,10 @@ Append
 to /etc/bash.bashrc
 
 echo "source ~/repos/configs/aliases.bashrc" >> ~/.bashrc
+sudo echo "source ~/repos/configs/aliases.bashrc" >> /etc/bash.bashrc 
 
 END
 
-# append to bash rc.
-# probably works for personal bash.bashrc files.  
-#echo 'source ~/repos/configs/aliases.bashrc' >> /etc/bash.bashrc
 
 # Aliases
 alias h="history"
