@@ -17,9 +17,11 @@
 Current folders for Linux Mint Debian. 
 The folders have to be changed for other distributions.
 
-cd /etc/
-rm profile
-sudo ln -s /home/kiro/repos/configs/profile profile
+# for LMDE and global profiles. 
+sudo rm /etc/profile & ln -s /home/kiro/repos/configs/profile profile
+
+# for ubuntu/ubuntu server and local profiles. 
+rm ~/.profile & ln -s ~/repos/configs/profile .profile
 
 END
 
