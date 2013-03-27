@@ -33,7 +33,7 @@ fi
 export PATH
 
 if [ "$PS1" ]; then
-  if [ "$BASH" ] && [ "$BASH" != "/bin/sh" ]; then
+  if [ "$BASH" ]; then
     # The file bash.bashrc already sets the default PS1.
     # PS1='\h:\w\$ '
     if [ -f /etc/bash.bashrc ]; then
