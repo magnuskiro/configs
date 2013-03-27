@@ -5,6 +5,8 @@ Append
 "source ~/repos/configs/aliases.bashrc"
 to /etc/bash.bashrc
 
+echo "source ~/repos/configs/aliases.bashrc" >> ~/.bashrc
+
 END
 
 # append to bash rc.
