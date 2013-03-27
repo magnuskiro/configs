@@ -21,7 +21,7 @@ The folders have to be changed for other distributions.
 sudo rm /etc/profile & ln -s /home/kiro/repos/configs/profile profile
 
 # for ubuntu/ubuntu server and local profiles. 
-rm ~/.profile & ln -s ~/repos/configs/profile .profile
+rm ~/.profile | ln -s ~/repos/configs/profile .profile
 
 END
 
