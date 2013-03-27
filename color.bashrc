@@ -5,6 +5,8 @@ Append
 "source /home/kiro/repos/configs/color.bashrc"
 to /etc/bash.bashrc
 
+echo "source ~/repos/configs/color.bashrc" >> ~/.bashrc
+
 END
 
 use_color=false
