@@ -107,5 +107,9 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
 source ~/configs/aliases.bashrc
 source ~/configs/color.bashrc
+
+# configure dockinstation for laptop TPx201 specific
+dock
