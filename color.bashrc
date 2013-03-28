@@ -1,12 +1,8 @@
 #!/bin/sh
 : <<'END'
-
 Append 
-"source /home/kiro/repos/configs/color.bashrc"
-to /etc/bash.bashrc
-
-echo "source ~/repos/configs/color.bashrc" >> ~/.bashrc
-
+"source ./color.bashrc"
+to ./.bashrc
 END
 
 use_color=false

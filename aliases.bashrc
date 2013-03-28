@@ -1,15 +1,9 @@
 #!/bin/sh
 : <<'END'
-
 Append 
-"source ~/repos/configs/aliases.bashrc"
-to /etc/bash.bashrc
-
-echo "source ~/repos/configs/aliases.bashrc" >> ~/.bashrc
-sudo echo "source ~/repos/configs/aliases.bashrc" >> /etc/bash.bashrc 
-
+"source ./aliases.bashrc"
+to ./.bashrc
 END
-
 
 # Aliases
 alias h="history"
@@ -19,11 +13,11 @@ alias cd..="cd .."
 # ack-grep
 alias a="ack-grep --color"
 
-# xfce4-display
-alias x="xfce4-display-settings"
-
+## TP x201 specifics
 # dockingStation
 alias dock="~/repos/scripts/dockingStation.sh"
+# xfce4-display - TODO moce to dockingStation.sh to fix screens. 
+alias x="xfce4-display-settings"
 
-# fortune 
+# fortune - LMDE specific. 
 /usr/games/fortune
