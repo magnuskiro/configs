@@ -23,4 +23,13 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+# extra path variables for development and such.
+export JAVA_HOME=/usr/lib/jvm/jdk1.7.0
+export JDK_HOME=/usr/lib/jvm/jdk1.7.0/bin
+export M2_HOME=/usr/local/apache-maven/apache-maven-3.0.4
+export M2=$M2_HOME/bin
+export IDEA=/usr/local/idea/bin
+
+export PATH=$PATH:$M2_HOME:$M2:$JAVA_HOME:$JDK_HOME:$IDEA
+
 
