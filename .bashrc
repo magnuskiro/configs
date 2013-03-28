@@ -104,8 +104,5 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # importing personal touches. 
-source ~/configs/aliases.bashrc
-source ~/configs/color.bashrc
-
-# configure dockinstation for laptop TPx201 specific
-dock
+source ~/repos/configs/aliases.bashrc
+source ~/repos/configs/color.bashrc
