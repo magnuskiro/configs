@@ -106,6 +106,3 @@ fi
 # importing personal touches. 
 source ~/repos/configs/aliases.bashrc
 source ~/repos/configs/color.bashrc
-
-# configure dockinstation for laptop TPx201 specific
-dock

@@ -32,4 +32,3 @@ export IDEA=/usr/local/idea/bin
 
 export PATH=$PATH:$M2_HOME:$M2:$JAVA_HOME:$JDK_HOME:$IDEA
 
-
