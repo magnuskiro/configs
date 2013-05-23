@@ -21,3 +21,8 @@ alias x="xfce4-display-settings"
 
 # fortune - LMDE specific. 
 /usr/games/fortune
+
+# compilescript 
+alias compile="~/repos/scripts/compile.sh"
+alias simplecompile="~/repos/scripts/simplecompile.sh"
+
