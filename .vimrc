@@ -10,8 +10,11 @@ filetype plugin on
 syntax on
 nnoremap <silent> <F8> :TlistToggle<CR>
 
-autocmd BufNewFile *.tex set tw=80
-autocmd BufRead *.tex set tw=80
+"autocmd BufNewFile *.tex set tw=80
+"autocmd BufRead *.tex set tw=80
+
+autocmd BufNewFile *.* set tw=80
+autocmd BufRead *.* set tw=80
 
 set nocompatible
 set ruler
