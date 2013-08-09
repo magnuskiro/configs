@@ -18,7 +18,7 @@ autocmd BufRead *.* set tw=80
 
 set nocompatible
 set ruler
-set pastetoggle=<F10>
+set pastetoggle=<F12>
 set showmatch
 set ignorecase
 set incsearch
