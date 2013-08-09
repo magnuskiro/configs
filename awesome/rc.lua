@@ -254,6 +254,38 @@ taglist.buttons = awful.util.table.join(
     awful.button({ },        5, awful.tag.viewprev
 ))
 
+tasklist = {}
+tasklist.buttons = awful.util.table.join(
+                     awful.button({ }, 1, function (c)
+                                              if c == client.focus then
+                                                  c.minimized = true
+                                              else
+                                                  if not c:isvisible() then
+                                                      awful.tag.viewonly(c:tags()[1])
+                                                  end
+                                                  -- This will also un-minimize
+                                                  -- the client, if needed
+                                                  client.focus = c
+                                                  c:raise()
+                                              end
+                                          end),
+                     awful.button({ }, 3, function ()
+                                              if instance then
+                                                  instance:hide()
+                                                  instance = nil
+                                              else
+                                                  instance = awful.menu.clients({ width=250 })
+                                              end
+                                          end),
+                     awful.button({ }, 4, function ()
+                                              awful.client.focus.byidx(1)
+                                              if client.focus then client.focus:raise() end
+                                          end),
+                     awful.button({ }, 5, function ()
+                                              awful.client.focus.byidx(-1)
+                                              if client.focus then client.focus:raise() end
+                                          end))
+
 for s = 1, scount do
     -- Create a promptbox
     promptbox[s] = awful.widget.prompt({ layout = awful.widget.layout.horizontal.leftright })
@@ -268,6 +300,12 @@ for s = 1, scount do
 
     -- Create the taglist
     taglist[s] = awful.widget.taglist(s, awful.widget.taglist.label.all, taglist.buttons)
+
+    -- Create a tasklist widget
+    tasklist[s] = awful.widget.tasklist(function(c)
+      return awful.widget.tasklist.label.currenttags(c, s)
+        end, tasklist.buttons)
+
     -- Create the wibox
     wibox[s] = awful.wibox({      screen = s,
         fg = beautiful.fg_normal, height = 12,
@@ -290,7 +328,8 @@ for s = 1, scount do
         separator, membar.widget, memicon,
         separator, batwidget, baticon,
         separator, tzswidget, cpugraph.widget, cpuicon,
-        separator, ["layout"] = awful.widget.layout.horizontal.rightleft
+        separator, ["layout"] = awful.widget.layout.horizontal.rightleft,
+		tasklist[s]
     }
 end
 -- }}}
@@ -465,7 +504,8 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey, "Shift" }, "f", function (c) if awful.client.floating.get(c)
         then awful.client.floating.delete(c);    awful.titlebar.remove(c)
         else awful.client.floating.set(c, true); awful.titlebar.add(c) end
-    end)
+    end),
+	awful.key({ modkey }, "F4", function (c) c:kill() end)
 )
 -- }}}
 
