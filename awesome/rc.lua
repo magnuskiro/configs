@@ -19,6 +19,8 @@ vicious = require("vicious")
 scratch = require("scratch")
 -- }}}
 
+-- Load Debian menu entries
+require("debian.menu")
 
 -- {{{ Variable definitions
 local altkey = "Mod1"
@@ -51,8 +53,8 @@ layouts = {
 -- {{{ Tags
 tags = {
   names  = { "shell", "web", "im", "code", 5, 6, 7, 8, "media" },
-  layout = { layouts[2], layouts[1], layouts[1], layouts[4], layouts[1],
-             layouts[6], layouts[6], layouts[5], layouts[6]
+  layout = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1],
+             layouts[1], layouts[1], layouts[1], layouts[1]
 }}
 
 for s = 1, scount do
@@ -64,6 +66,24 @@ for s = 1, scount do
 end
 -- }}}
 
+-- {{{ Menu
+-- Create a laucher widget and a main menu
+myawesomemenu = {
+   { "manual", terminal .. " -e man awesome" },
+   { "edit config", editor_cmd .. " " .. awesome.conffile },
+   { "restart", awesome.restart },
+   { "quit", awesome.quit }
+}
+
+mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
+                                    { "Debian", debian.menu.Debian_menu.Debian },
+                                    { "open terminal", terminal }
+                                  }
+                        })
+
+mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
+                                     menu = mymainmenu })
+-- }}}
 
 -- {{{ Wibox
 --
@@ -358,10 +378,11 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
+
+	awful.key({ modkey,           }, "w", function () mymainmenu:show({keygrabber=true}) end),
 	
     -- {{{ Applications
     awful.key({ modkey }, "e", function () exec("emacsclient -n -c") end),
-    awful.key({ modkey }, "w", function () exec("firefox") end),
     awful.key({ altkey }, "F1",  function () exec("urxvt") end),
     awful.key({ altkey }, "#49", function () scratch.drop("urxvt", "bottom", nil, nil, 0.30) end),
     awful.key({ modkey }, "a", function () exec("urxvt -T Alpine -e alpine.exp") end),
@@ -370,6 +391,8 @@ globalkeys = awful.util.table.join(
     awful.key({ altkey }, "#51", function () if boosk then osk(nil, mouse.screen)
         else boosk, osk = pcall(require, "osk") end
     end),
+	-- printscreen 
+	awful.key({ }, "Print", function () awful.util.spawn("gnome-screenshot") end),
     -- }}}
 
     -- {{{ Multimedia keys
@@ -384,47 +407,59 @@ globalkeys = awful.util.table.join(
   --awful.key({}, "#235", function () exec("xset dpms force off") end),
     awful.key({}, "#235", function () exec("pypres.py") end),
     awful.key({}, "#244", function () sexec("acpitool -b | xmessage -timeout 10 -file -")   end),
-    
 -- }}}
 
     -- {{{ Prompt menus
-    awful.key({ altkey }, "F2", function ()
+    -- Run program 
+    awful.key({ modkey }, "F2", function ()
         awful.prompt.run({ prompt = "Run: " }, promptbox[mouse.screen].widget,
             function (...) promptbox[mouse.screen].text = exec(unpack(arg), false) end,
             awful.completion.shell, awful.util.getdir("cache") .. "/history")
     end),
+	awful.key({ altkey }, "F2", function () -- alt+f2 is standard linux run-program promt.
+        awful.prompt.run({ prompt = "Run: " }, promptbox[mouse.screen].widget,
+            function (...) promptbox[mouse.screen].text = exec(unpack(arg), false) end,
+            awful.completion.shell, awful.util.getdir("cache") .. "/history")
+    end),
+	awful.key({ modkey }, "r", function ()
+        awful.prompt.run({ prompt = "Run: " }, promptbox[mouse.screen].widget,
+            function (...) promptbox[mouse.screen].text = exec(unpack(arg), false) end,
+            awful.completion.shell, awful.util.getdir("cache") .. "/history")
+    end),
+	-- Serach dictionary
+	-- TODO make it work. 
     awful.key({ modkey }, "F3", function ()
         awful.prompt.run({ prompt = "Dictionary: " }, promptbox[mouse.screen].widget,
             function (words)
                 sexec("crodict "..words.." | ".."xmessage -timeout 10 -file -")
             end)
     end),
-    awful.key({ modkey }, "F4", function ()
+    -- Open firefox with spesific search.
+	-- TODO test and make sure it works.  
+	awful.key({ modkey }, "F4", function ()
         awful.prompt.run({ prompt = "Web: " }, promptbox[mouse.screen].widget,
             function (command)
                 sexec("firefox 'http://yubnub.org/parser/parse?command="..command.."'")
-                awful.tag.viewonly(tags[scount][3])
+                awful.tag.viewonly(tags[scount][2])
             end)
     end),
+	-- Run Lua code.  
+	-- TODO lern lua scripting. 
     awful.key({ altkey }, "F5", function ()
         awful.prompt.run({ prompt = "Lua: " }, promptbox[mouse.screen].widget,
         awful.util.eval, nil, awful.util.getdir("cache") .. "/history_eval")
     end),
-    awful.key({ modkey }, "r", function ()
-        awful.prompt.run({ prompt = "Run: " }, promptbox[mouse.screen].widget,
-            function (...) promptbox[mouse.screen].text = exec(unpack(arg), false) end,
-            awful.completion.shell, awful.util.getdir("cache") .. "/history")
-    end),
 	awful.key({ modkey }, "x", function ()
-                  awful.prompt.run({ prompt = "Run Lua code: " },
-                  mypromptbox[mouse.screen].widget,
-                  awful.util.eval, nil,
-                  awful.util.getdir("cache") .. "/history_eval")
+        awful.prompt.run({ prompt = "Run Lua code: " }, promptbox[mouse.screen].widget,
+        awful.util.eval, nil, awful.util.getdir("cache") .. "/history_eval")
     end),
     -- }}}
 
     -- {{{ Awesome controls
-	awful.key({ modkey }, "Return", function () awful.util.spawn(terminal) end),
+    -- Open terminal 
+	awful.key({ modkey }, "Return", function () 
+		awful.util.spawn(terminal) 
+	end),
     awful.key({ modkey }, "b", function ()
         wibox[mouse.screen].visible = not wibox[mouse.screen].visible
     end),
@@ -437,7 +472,9 @@ globalkeys = awful.util.table.join(
 
     -- {{{ Tag browsing
     awful.key({ altkey }, "n",   awful.tag.viewnext),
+    awful.key({ modkey }, "n",   awful.tag.viewnext),
     awful.key({ altkey }, "p",   awful.tag.viewprev),
+    awful.key({ modkey }, "p",   awful.tag.viewprev),
     awful.key({ altkey }, "Tab", awful.tag.history.restore),
     -- }}}
 
@@ -451,9 +488,9 @@ globalkeys = awful.util.table.join(
     -- }}}
 
     -- {{{ Focus controls
-    awful.key({ modkey }, "p", function () awful.screen.focus_relative(1) end),
-    awful.key({ modkey }, "s", function () scratch.pad.toggle() end),
-    awful.key({ modkey }, "u", awful.client.urgent.jumpto),
+--    awful.key({ modkey }, "p", function () awful.screen.focus_relative(1) end),
+--    awful.key({ modkey }, "s", function () scratch.pad.toggle() end),
+--    awful.key({ modkey }, "u", awful.client.urgent.jumpto),
     awful.key({ modkey }, "j", function ()
         awful.client.focus.byidx(1)
         if client.focus then client.focus:raise() end
@@ -478,8 +515,11 @@ globalkeys = awful.util.table.join(
 
 -- {{{ Client manipulation
 clientkeys = awful.util.table.join(
+	-- kill program in focus. 
     awful.key({ modkey }, "c", function (c) c:kill() end),
-    awful.key({ modkey }, "d", function (c) scratch.pad.set(c, 0.60, 0.60, true) end),
+	awful.key({ altkey }, "F4", function (c) c:kill() end),
+    
+	awful.key({ modkey }, "d", function (c) scratch.pad.set(c, 0.60, 0.60, true) end),
     awful.key({ modkey }, "f", function (c) c.fullscreen = not c.fullscreen end),
     awful.key({ modkey }, "m", function (c)
         c.maximized_horizontal = not c.maximized_horizontal
@@ -495,8 +535,8 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey }, "Right", function () awful.client.moveresize( 20,   0,   0,   0) end),
     awful.key({ modkey, "Shift" }, "0", function (c) c.sticky = not c.sticky end),
     awful.key({ modkey, "Shift" }, "m", function (c) c:swap(awful.client.getmaster()) end),
-    awful.key({ modkey, "Shift" }, "c", function (c) exec("kill -CONT " .. c.pid) end),
-    awful.key({ modkey, "Shift" }, "s", function (c) exec("kill -STOP " .. c.pid) end),
+--    awful.key({ modkey, "Shift" }, "c", function (c) exec("kill -CONT " .. c.pid) end),
+--    awful.key({ modkey, "Shift" }, "s", function (c) exec("kill -STOP " .. c.pid) end),
     awful.key({ modkey, "Shift" }, "t", function (c)
         if   c.titlebar then awful.titlebar.remove(c)
         else awful.titlebar.add(c, { modkey = modkey }) end
@@ -504,8 +544,8 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey, "Shift" }, "f", function (c) if awful.client.floating.get(c)
         then awful.client.floating.delete(c);    awful.titlebar.remove(c)
         else awful.client.floating.set(c, true); awful.titlebar.add(c) end
-    end),
-	awful.key({ modkey }, "F4", function (c) c:kill() end)
+    end)
+	
 )
 -- }}}
 
@@ -553,6 +593,10 @@ awful.rules.rules = {
       border_width = beautiful.border_width,
       border_color = beautiful.border_normal }
     },
+    { rule = { class = "Skype",  instance = "Navigator" },
+      properties = { tag = tags[scount][3] } },
+    { rule = { class = "xchat",  instance = "Navigator" },
+      properties = { tag = tags[scount][3] } },	
     { rule = { class = "Firefox",  instance = "Navigator" },
       properties = { tag = tags[scount][3] } },
     { rule = { class = "Emacs",    instance = "emacs" },
@@ -625,3 +669,11 @@ for s = 1, scount do screen[s]:add_signal("arrange", function ()
 end
 -- }}}
 -- }}}
+
+-- run network-manager
+os.execute("~/repos/scripts/run_once nm-applet &")
+os.execute("~/repos/scripts/run_once gnome-do &")
+os.execute("~/repos/scripts/run_once skype &")
+os.execute("~/repos/scripts/run_once xchat &")
+os.execute("dropbox start")
+
