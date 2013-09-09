@@ -1,12 +1,17 @@
 -- {{{ License
 --
--- Awesome configuration, using awesome 3.4.14 on Arch GNU/Linux
---   * Adrian C. <anrxc@sysphere.org>
-
--- Screenshot: http://sysphere.org/gallery/snapshots
-
--- This work is licensed under the Creative Commons Attribution-Share
--- Alike License: http://creativecommons.org/licenses/by-sa/3.0/
+--	This config file is taken from someone awesome,
+--  and then modified to the extent that
+--  the person creating it in the first place 
+--  can't say I couldn't create it myself. 
+--  
+--  Use as please, don't complain, 
+--  copy'n paste 
+--  do maintain,
+--  use without haste,
+--  Enjoy!
+--  
+-- Kirø
 -- }}}
 
 
@@ -52,8 +57,8 @@ layouts = {
 
 -- {{{ Tags
 tags = {
-  names  = { "shell", "web", "im", "code", 5, 6, 7, 8, "media" },
-  layout = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1],
+  names  = { "main-shell", "web", "pdf", "code-shell", "code", 6, 7, "im", "media" },
+  layout = { layouts[1], layouts[4], layouts[1], layouts[1], layouts[1],
              layouts[1], layouts[1], layouts[1], layouts[1]
 }}
 
@@ -101,7 +106,7 @@ cpuicon.image = image(beautiful.widget_cpu)
 cpugraph  = awful.widget.graph()
 tzswidget = widget({ type = "textbox" })
 -- Graph properties
-cpugraph:set_width(40):set_height(14)
+cpugraph:set_width(30):set_height(14)
 cpugraph:set_background_color(beautiful.fg_off_widget)
 cpugraph:set_gradient_angle(0):set_gradient_colors({
    beautiful.fg_end_widget, beautiful.fg_center_widget, beautiful.fg_widget
@@ -172,48 +177,19 @@ upicon.image = image(beautiful.widget_netup)
 netwidget = widget({ type = "textbox" })
 -- Register widget
 vicious.register(netwidget, vicious.widgets.net, '<span color="'
-  .. beautiful.fg_netdn_widget ..'">${eth0 down_kb}</span> <span color="'
-  .. beautiful.fg_netup_widget ..'">${eth0 up_kb}</span>', 3)
+  .. beautiful.fg_netdn_widget ..'">${eth1 down_kb}</span> <span color="'
+  .. beautiful.fg_netup_widget ..'">${eth1 up_kb}</span>', 0)
 -- }}}
 
--- {{{ Mail subject
-mailicon = widget({ type = "imagebox" })
-mailicon.image = image(beautiful.widget_mail)
+-- {{{ Wifi usage
+wifiicon = widget({ type = "imagebox" })
+wifiicon.image = image(beautiful.widget_wifi)
 -- Initialize widget
-mailwidget = widget({ type = "textbox" })
+wifiwidget = widget({ type = "textbox" })
 -- Register widget
-vicious.register(mailwidget, vicious.widgets.mbox, "$1", 181, {home .. "/mail/Inbox", 15})
--- Register buttons
-mailwidget:buttons(awful.util.table.join(
-  awful.button({ }, 1, function () exec("urxvt -T Alpine -e alpine.exp") end)
-))
--- }}}
-
--- {{{ Org-mode agenda
-orgicon = widget({ type = "imagebox" })
-orgicon.image = image(beautiful.widget_org)
--- Initialize widget
-orgwidget = widget({ type = "textbox" })
--- Configure widget
-local orgmode = {
-  files = { home.."/.org/computers.org",
-    home.."/.org/index.org", home.."/.org/personal.org",
-  },
-  color = {
-    past   = '<span color="'..beautiful.fg_urgent..'">',
-    today  = '<span color="'..beautiful.fg_normal..'">',
-    soon   = '<span color="'..beautiful.fg_widget..'">',
-    future = '<span color="'..beautiful.fg_netup_widget..'">'
-}} -- Register widget
-vicious.register(orgwidget, vicious.widgets.org,
-  orgmode.color.past..'$1</span>-'..orgmode.color.today .. '$2</span>-' ..
-  orgmode.color.soon..'$3</span>-'..orgmode.color.future.. '$4</span>', 601,
-  orgmode.files
-) -- Register buttons
-orgwidget:buttons(awful.util.table.join(
-  awful.button({ }, 1, function () exec("emacsclient --eval '(org-agenda-list)'") end),
-  awful.button({ }, 3, function () exec("emacsclient --eval '(make-remember-frame)'") end)
-))
+vicious.register(wifiwidget, vicious.widgets.wifi,
+-- name of network / data transmission rate / link quality percentage
+	'\'${ssid}\' ${rate}Mb/s ${linp}%', 3, "wlan0")
 -- }}}
 
 -- {{{ Volume level
@@ -231,11 +207,17 @@ volbar:set_gradient_colors({ beautiful.fg_widget,
 }) -- Enable caching
 vicious.cache(vicious.widgets.volume)
 -- Register widgets
-vicious.register(volbar,    vicious.widgets.volume,  "$1",  2, "PCM")
-vicious.register(volwidget, vicious.widgets.volume, " $1%", 2, "PCM")
+vicious.register(volbar,    vicious.widgets.volume,  "$1",  2, "Master -c 0") -- register the right sound card
+--vicious.register(volwidget, vicious.widgets.volume, "$1%", 2, "Master -c 0") -- run alsamixer and see which. 
+vicious.register(volwidget, vicious.widgets.volume,
+    function(widget, args)
+      local label = { ["♫"] = "O", ["♩"] = "M" } -- mute label.
+      return args[1] .. "%" .. label[args[2]] -- args[1] is the vol level, args[2] is the mute state(1=mute)
+	end, 2, "Master -c 0") -- set the correct sound device. 
 -- Register buttons
 volbar.widget:buttons(awful.util.table.join(
-   awful.button({ }, 1, function () exec("kmix") end),
+   awful.button({ }, 1, function () exec("amixer") end),
+   awful.button({ }, 2, function () exec("amixer -q sset Master toggle")   end),
    awful.button({ }, 4, function () exec("amixer -q set PCM 2dB+", false) end),
    awful.button({ }, 5, function () exec("amixer -q set PCM 2dB-", false) end)
 )) -- Register assigned buttons
@@ -341,9 +323,8 @@ for s = 1, scount do
         s == 1 and systray or nil,
         separator, datewidget, dateicon,
         separator, volwidget,  volbar.widget, volicon,
-        separator, orgwidget,  orgicon,
-        separator, mailwidget, mailicon,
-        separator, upicon,     netwidget, dnicon,
+        separator, wifiwidget, wifiicon,
+        separator, upicon, netwidget, dnicon,
         separator, fs.s.widget, fs.h.widget, fs.r.widget, fs.b.widget, fsicon,
         separator, membar.widget, memicon,
         separator, batwidget, baticon,
@@ -378,8 +359,8 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
-
 	awful.key({ modkey,           }, "w", function () mymainmenu:show({keygrabber=true}) end),
+    awful.key({ modkey }, "l", function () exec("xscreensaver-command -lock") end),
 	
     -- {{{ Applications
     awful.key({ modkey }, "e", function () exec("emacsclient -n -c") end),
@@ -396,8 +377,8 @@ globalkeys = awful.util.table.join(
     -- }}}
 
     -- {{{ Multimedia keys
-    awful.key({}, "#160", function () exec("kscreenlocker --forcelock") end),
---    awful.key({}, "#121", function () exec("pvol.py -m") end), -- mute just works....
+    awful.key({}, "#160", function () exec("xscreensaver-command -lock") end),
+    awful.key({}, "#121", function () exec("amixer -c 0 sset Master toggle") end), -- Mute sound.  
     awful.key({}, "#122", function () exec("amixer -c 0 sset Master 5- umute") end), -- increase sound 
     awful.key({}, "#123", function () exec("amixer -c 0 sset Master 5+ umute") end), -- decrease sound
     awful.key({}, "#232", function () exec("plight.py -s") end),
@@ -475,11 +456,12 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "n",   awful.tag.viewnext),
     awful.key({ altkey }, "p",   awful.tag.viewprev),
     awful.key({ modkey }, "p",   awful.tag.viewprev),
-    awful.key({ altkey }, "Tab", awful.tag.history.restore),
+	
+    awful.key({ modkey }, "Tab", awful.tag.history.restore), -- switch to previous desktop. 
     -- }}}
 
     -- {{{ Layout manipulation
-    awful.key({ modkey }, "l",          function () awful.tag.incmwfact( 0.05) end),
+--    awful.key({ modkey }, "l",          function () awful.tag.incmwfact( 0.05) end),
     awful.key({ modkey }, "h",          function () awful.tag.incmwfact(-0.05) end),
     awful.key({ modkey, "Shift" }, "l", function () awful.client.incwfact(-0.05) end),
     awful.key({ modkey, "Shift" }, "h", function () awful.client.incwfact( 0.05) end),
@@ -499,7 +481,7 @@ globalkeys = awful.util.table.join(
         awful.client.focus.byidx(-1)
         if client.focus then client.focus:raise() end
     end),
-    awful.key({ modkey }, "Tab", function ()
+    awful.key({ altkey }, "Tab", function () -- switch focus of windows on a desktop.  
         awful.client.focus.history.previous()
         if client.focus then client.focus:raise() end
     end),
@@ -593,14 +575,20 @@ awful.rules.rules = {
       border_width = beautiful.border_width,
       border_color = beautiful.border_normal }
     },
-    { rule = { class = "Skype",  instance = "Navigator" },
-      properties = { tag = tags[scount][3] } },
-    { rule = { class = "xchat",  instance = "Navigator" },
-      properties = { tag = tags[scount][3] } },	
-    { rule = { class = "Firefox",  instance = "Navigator" },
-      properties = { tag = tags[scount][3] } },
-    { rule = { class = "Emacs",    instance = "emacs" },
-      properties = { tag = tags[1][2] } },
+
+	{ rule = { class = "Spotify", instance="spotify" },
+      properties = { tag = tags['media'] } },
+
+    { rule = { class = "Skype",  instance = "im" },
+      properties = { tag = tags[scount][7] } },
+    
+	{ rule = { class = "irc",  instance = "im" },
+      properties = { tag = tags[scount][7] } },	
+    
+	{ rule = { class = "Firefox",  instance = "web" },
+      properties = { tag = tags['web'] } },
+    
+
     { rule = { class = "Emacs",    instance = "_Remember_" },
       properties = { floating = true }, callback = awful.titlebar.add  },
     { rule = { class = "Xmessage", instance = "xmessage" },
@@ -674,6 +662,7 @@ end
 os.execute("~/repos/scripts/run_once nm-applet &")
 os.execute("~/repos/scripts/run_once gnome-do &")
 os.execute("~/repos/scripts/run_once skype &")
-os.execute("~/repos/scripts/run_once xchat &")
+os.execute("~/repos/scripts/run_once irc &")
+os.execute("~/repos/scripts/run_once spotify &")
 os.execute("dropbox start")
 
