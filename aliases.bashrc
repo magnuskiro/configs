@@ -25,4 +25,4 @@ alias x="xfce4-display-settings"
 # compilescript 
 alias compile="~/repos/scripts/compile.sh"
 alias simplecompile="~/repos/scripts/simplecompile.sh"
-
+alias irc="ssh kiro@s.magnuskiro.no -p 40596 -t 'screen -RD -S irc irssi'"
