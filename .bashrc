@@ -106,3 +106,4 @@ fi
 # importing personal touches. 
 source ~/repos/configs/aliases.bashrc
 source ~/repos/configs/color.bashrc
+
