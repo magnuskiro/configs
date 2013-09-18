@@ -230,7 +230,10 @@ dateicon.image = image(beautiful.widget_date)
 -- Initialize widget
 datewidget = widget({ type = "textbox" })
 -- Register widget
-vicious.register(datewidget, vicious.widgets.date, "%R", 61)
+-- %B / %b = month(September) / short form (Sept)
+-- %D / %d = date(09/19/13 mm/dd/yy) / day of month (19 dd) 
+-- %R / %r = time now: 24h / 12h(am/pm)+seconds (01:10:16 not much usefull when the update rate of the widget is 30ish seconds.)
+vicious.register(datewidget, vicious.widgets.date, "%b %d, %R", 60)
 -- Register buttons
 datewidget:buttons(awful.util.table.join(
   awful.button({ }, 1, function () exec("pylendar.py") end)
@@ -322,11 +325,11 @@ for s = 1, scount do
         },
         s == 1 and systray or nil,
         separator, datewidget, dateicon,
-        separator, volwidget,  volbar.widget, volicon,
         separator, wifiwidget, wifiicon,
         separator, upicon, netwidget, dnicon,
         separator, fs.s.widget, fs.h.widget, fs.r.widget, fs.b.widget, fsicon,
         separator, membar.widget, memicon,
+        separator, volwidget,  volbar.widget, volicon,
         separator, batwidget, baticon,
         separator, tzswidget, cpugraph.widget, cpuicon,
         separator, ["layout"] = awful.widget.layout.horizontal.rightleft,
