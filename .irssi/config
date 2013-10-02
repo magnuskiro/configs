@@ -21,6 +21,7 @@ servers = (
     use_ssl = "no";
     ssl_verify = "no";
     autosendcmd = "/msg NickServ IDENTIFY password username";
+	autoconnect = "yes";
   },
   {
     address = "irc.gamesurge.net";
