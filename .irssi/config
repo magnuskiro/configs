@@ -20,6 +20,7 @@ servers = (
     port = "6667";
     use_ssl = "no";
     ssl_verify = "no";
+    autosendcmd = "/msg NickServ IDENTIFY password username";
   },
   {
     address = "irc.gamesurge.net";
@@ -273,7 +274,22 @@ statusbar = {
     };
   };
 };
+
+#THIS SECTION DEALS WITH SETTINGS SUCH AS YOUR NAME AND TIMESTAMP FORMAT
 settings = {
-  core = { real_name = "kiro"; user_name = "kiro"; nick = "kiro"; };
-  "fe-text" = { actlist_sort = "refnum"; };
+  core = {
+    real_name = "Magnus Kiro";
+    user_name = "magnuskiro";
+    nick = "magnuskiro";
+    timestamp_format = "%H:%M:%S";
+  };
+  "fe-text" = { scrollback_time = "48h"; actlist_sort = "refnum"; };
+  "fe-common/core" = { autolog = "yes"; };
 };
+
+#THIS SECTION DEALS WITH YOUR HILIGHTS
+hilights = (
+  { text = "Nick"; nick = "no"; word = "no"; },
+  { text = "Name"; nick = "no"; word = "no"; }
+);
+
