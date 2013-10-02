@@ -20,7 +20,7 @@ servers = (
     port = "6667";
     use_ssl = "no";
     ssl_verify = "no";
-    autosendcmd = "/msg nickserv identify nickname password";
+    autosendcmd = "/msg NickServ IDENTIFY password username";
   },
   {
     address = "irc.gamesurge.net";
