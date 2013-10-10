@@ -217,9 +217,9 @@ vicious.register(volwidget, vicious.widgets.volume,
 -- Register buttons
 volbar.widget:buttons(awful.util.table.join(
    awful.button({ }, 1, function () exec("amixer") end),
-   awful.button({ }, 2, function () exec("amixer -q sset Master toggle")   end),
-   awful.button({ }, 4, function () exec("amixer -q set PCM 2dB+", false) end),
-   awful.button({ }, 5, function () exec("amixer -q set PCM 2dB-", false) end)
+   awful.button({ }, 2, function () exec("amixer -D pulse set Master toggle")   end),
+   awful.button({ }, 4, function () exec("amixer -q set PCM 2%+", false) end),
+   awful.button({ }, 5, function () exec("amixer -q set PCM 2%-", false) end)
 )) -- Register assigned buttons
 volwidget:buttons(volbar.widget:buttons())
 -- }}}
@@ -381,9 +381,9 @@ globalkeys = awful.util.table.join(
 
     -- {{{ Multimedia keys
     awful.key({}, "#160", function () exec("xscreensaver-command -lock") end),
-    awful.key({}, "#121", function () exec("amixer -c 0 sset Master toggle") end), -- Mute sound.  
-    awful.key({}, "#122", function () exec("amixer -c 0 sset Master 5- umute") end), -- increase sound 
-    awful.key({}, "#123", function () exec("amixer -c 0 sset Master 5+ umute") end), -- decrease sound
+    awful.key({}, "#121", function () exec("amixer -D pulse set Master togglee") end), -- Mute sound.  
+    awful.key({}, "#122", function () exec("amixer -c 0 sset Master 2%- umute") end), -- increase sound 
+    awful.key({}, "#123", function () exec("amixer -c 0 sset Master 2%+ umute") end), -- decrease sound
     awful.key({}, "#232", function () exec("plight.py -s") end),
     awful.key({}, "#233", function () exec("plight.py -s") end),
   --awful.key({}, "#150", function () exec("sudo /usr/sbin/pm-suspend")   end),
