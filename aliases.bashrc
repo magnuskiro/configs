@@ -10,20 +10,19 @@ alias h="history"
 alias l='ls -lashF --color --show-control-chars'
 alias cd..="cd .."
 
-# ack-grep
+# ack-grep. Does the same as grep, only better.
 alias a="ack-grep --color"
 
 ## TP x201 specifics
 # dockingStation
 alias dock="~/repos/scripts/dockingStation.sh"
-# xfce4-display - TODO moce to dockingStation.sh to fix screens. 
-alias x="xfce4-display-settings"
 
 # fortune - LMDE specific. 
 /usr/games/fortune
 
 # compilescript 
 alias compile="~/repos/scripts/compile.sh"
-alias simplecompile="~/repos/scripts/simplecompile.sh"
+
+# IRC, irssi screens. 
 alias ircsrv="screen -RD -S irc irssi"
 alias irc="ssh kiro@s.magnuskiro.no -p 40596 -t 'screen -RD -S irc irssi'"
