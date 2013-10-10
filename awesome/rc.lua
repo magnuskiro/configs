@@ -1,9 +1,9 @@
 -- {{{ License
 --
 --	This config file is taken from someone awesome,
---  and then modified to the extent that
---  the person creating it in the first place 
---  can't say I couldn't create it myself. 
+--  then modified to the extent that
+--  the person created it in the first place 
+--  can't say I couldn't create it on my own. 
 --  
 --  Use as please, don't complain, 
 --  copy'n paste 
@@ -484,10 +484,24 @@ globalkeys = awful.util.table.join(
         awful.client.focus.byidx(-1)
         if client.focus then client.focus:raise() end
     end),
-    awful.key({ altkey }, "Tab", function () -- switch focus of windows on a desktop.  
-        awful.client.focus.history.previous()
-        if client.focus then client.focus:raise() end
-    end),
+-- alt + tab functionality
+    awful.key({ altkey,           }, "Tab",
+        function ()
+            -- awful.client.focus.history.previous()
+            awful.client.focus.byidx(-1)
+            if client.focus then
+                client.focus:raise()
+            end
+        end),
+    awful.key({ altkey, "Shift"   }, "Tab",
+        function ()
+            -- awful.client.focus.history.previous()
+            awful.client.focus.byidx(1)
+            if client.focus then
+                client.focus:raise()
+            end
+        end),
+-- end alt + tab functionality. 
     awful.key({ altkey }, "Escape", function ()
         awful.menu.menu_keys.down = { "Down", "Alt_L" }
         local cmenu = awful.menu.clients({width=230}, { keygrabber=true, coords={x=525, y=330} })
@@ -666,6 +680,6 @@ os.execute("~/repos/scripts/run_once nm-applet &")
 os.execute("~/repos/scripts/run_once gnome-do &")
 os.execute("~/repos/scripts/run_once skype &")
 os.execute("~/repos/scripts/run_once irc &")
-os.execute("~/repos/scripts/run_once spotify &")
+os.execute("~/repos/scripts/run_once xscreensaver &")
 os.execute("dropbox start")
 
