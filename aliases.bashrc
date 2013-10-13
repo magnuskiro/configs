@@ -18,9 +18,9 @@ alias a="ack-grep --color"
 alias dock="~/repos/scripts/dockingStation.sh"
 
 # fortune - LMDE specific. 
-if [ $TERM == "xterm" ]; then
-  /us/games/fortune -s
-fi
+#if [ $TERM == "xterm" ]; then
+#  /usr/games/fortune -s
+#fi
 
 # compilescript 
 alias compile="~/repos/scripts/compile.sh"
