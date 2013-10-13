@@ -29,6 +29,7 @@ export JDK_HOME=/usr/lib/jvm/jdk1.7.0/bin
 export M2_HOME=/usr/local/apache-maven/apache-maven-3.0.4
 export M2=$M2_HOME/bin
 export IDEA=/usr/local/idea/bin
+export PYCHARM=/usr/local/pycharm/bin
 
-export PATH=$PATH:$M2_HOME:$M2:$JAVA_HOME:$JDK_HOME:$IDEA
+export PATH=$PATH:$M2_HOME:$M2:$JAVA_HOME:$JDK_HOME:$IDEA:$PYCHARM
 

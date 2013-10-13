@@ -1,9 +1,9 @@
 -- {{{ License
 --
 --	This config file is taken from someone awesome,
---  and then modified to the extent that
---  the person creating it in the first place 
---  can't say I couldn't create it myself. 
+--  then modified to the extent that
+--  the person created it in the first place 
+--  can't say I couldn't create it on my own. 
 --  
 --  Use as please, don't complain, 
 --  copy'n paste 
@@ -217,9 +217,9 @@ vicious.register(volwidget, vicious.widgets.volume,
 -- Register buttons
 volbar.widget:buttons(awful.util.table.join(
    awful.button({ }, 1, function () exec("amixer") end),
-   awful.button({ }, 2, function () exec("amixer -q sset Master toggle")   end),
-   awful.button({ }, 4, function () exec("amixer -q set PCM 2dB+", false) end),
-   awful.button({ }, 5, function () exec("amixer -q set PCM 2dB-", false) end)
+   awful.button({ }, 2, function () exec("amixer -D pulse set Master toggle")   end),
+   awful.button({ }, 4, function () exec("amixer -q set PCM 2%+", false) end),
+   awful.button({ }, 5, function () exec("amixer -q set PCM 2%-", false) end)
 )) -- Register assigned buttons
 volwidget:buttons(volbar.widget:buttons())
 -- }}}
@@ -381,9 +381,9 @@ globalkeys = awful.util.table.join(
 
     -- {{{ Multimedia keys
     awful.key({}, "#160", function () exec("xscreensaver-command -lock") end),
-    awful.key({}, "#121", function () exec("amixer -c 0 sset Master toggle") end), -- Mute sound.  
-    awful.key({}, "#122", function () exec("amixer -c 0 sset Master 5- umute") end), -- increase sound 
-    awful.key({}, "#123", function () exec("amixer -c 0 sset Master 5+ umute") end), -- decrease sound
+    awful.key({}, "#121", function () exec("amixer -D pulse set Master togglee") end), -- Mute sound.  
+    awful.key({}, "#122", function () exec("amixer -c 0 sset Master 2%- umute") end), -- increase sound 
+    awful.key({}, "#123", function () exec("amixer -c 0 sset Master 2%+ umute") end), -- decrease sound
     awful.key({}, "#232", function () exec("plight.py -s") end),
     awful.key({}, "#233", function () exec("plight.py -s") end),
   --awful.key({}, "#150", function () exec("sudo /usr/sbin/pm-suspend")   end),
@@ -484,10 +484,24 @@ globalkeys = awful.util.table.join(
         awful.client.focus.byidx(-1)
         if client.focus then client.focus:raise() end
     end),
-    awful.key({ altkey }, "Tab", function () -- switch focus of windows on a desktop.  
-        awful.client.focus.history.previous()
-        if client.focus then client.focus:raise() end
-    end),
+-- alt + tab functionality
+    awful.key({ altkey,           }, "Tab",
+        function ()
+            -- awful.client.focus.history.previous()
+            awful.client.focus.byidx(-1)
+            if client.focus then
+                client.focus:raise()
+            end
+        end),
+    awful.key({ altkey, "Shift"   }, "Tab",
+        function ()
+            -- awful.client.focus.history.previous()
+            awful.client.focus.byidx(1)
+            if client.focus then
+                client.focus:raise()
+            end
+        end),
+-- end alt + tab functionality. 
     awful.key({ altkey }, "Escape", function ()
         awful.menu.menu_keys.down = { "Down", "Alt_L" }
         local cmenu = awful.menu.clients({width=230}, { keygrabber=true, coords={x=525, y=330} })
@@ -666,6 +680,6 @@ os.execute("~/repos/scripts/run_once nm-applet &")
 os.execute("~/repos/scripts/run_once gnome-do &")
 os.execute("~/repos/scripts/run_once skype &")
 os.execute("~/repos/scripts/run_once irc &")
-os.execute("~/repos/scripts/run_once spotify &")
+os.execute("~/repos/scripts/run_once xscreensaver &")
 os.execute("dropbox start")
 
