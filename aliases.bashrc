@@ -7,7 +7,7 @@ END
 
 # Aliases
 alias h="history"
-alias l='ls -lashF --color --show-control-chars'
+alias l="ls -lAhoF --color --show-control-chars"
 alias cd..="cd .."
 
 # ack-grep. Does the same as grep, only better.
@@ -18,9 +18,7 @@ alias a="ack-grep --color"
 alias dock="~/repos/scripts/dockingStation.sh"
 
 # fortune - LMDE specific. 
-#if [ $TERM == "xterm" ]; then
-#  /usr/games/fortune -s
-#fi
+/usr/games/fortune -s
 
 # compilescript 
 alias compile="~/repos/scripts/compile.sh"
