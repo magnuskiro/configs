@@ -20,8 +20,8 @@ require("awful")
 require("awful.rules")
 require("awful.autofocus")
 -- User libraries
-vicious = require("vicious")
-scratch = require("scratch")
+local vicious = require("vicious")
+local scratch = require("scratch")
 -- }}}
 
 -- Load Debian menu entries
@@ -40,7 +40,7 @@ local scount = screen.count()
 beautiful.init(home .. "/.config/awesome/zenburn.lua")
 
 terminal = "x-terminal-emulator"
-editor = os.getenv("EDITOR") or "editor"
+editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Window management layouts
@@ -69,6 +69,7 @@ for s = 1, scount do
 --      awful.tag.setproperty(t, "hide",  (i==6 or  i==7) and true)
   end
 end
+
 -- }}}
 
 -- {{{ Menu
@@ -381,9 +382,15 @@ globalkeys = awful.util.table.join(
 
     -- {{{ Multimedia keys
     awful.key({}, "#160", function () exec("xscreensaver-command -lock") end),
+-- sound commands
     awful.key({}, "#121", function () exec("amixer -D pulse set Master togglee") end), -- Mute sound.  
+    awful.key({ modkey }, "m", function () exec("amixer -D pulse set Master togglee") end), -- Mute sound.  
     awful.key({}, "#122", function () exec("amixer -c 0 sset Master 2%- umute") end), -- increase sound 
+    awful.key({ modkey }, "Down", function () exec("amixer -c 0 sset Master 2%- umute") end), -- increase sound 
     awful.key({}, "#123", function () exec("amixer -c 0 sset Master 2%+ umute") end), -- decrease sound
+    awful.key({ modkey }, "Up", function () exec("amixer -c 0 sset Master 2%+ umute") end), -- decrease sound
+-- END sound commands
+
     awful.key({}, "#232", function () exec("plight.py -s") end),
     awful.key({}, "#233", function () exec("plight.py -s") end),
   --awful.key({}, "#150", function () exec("sudo /usr/sbin/pm-suspend")   end),
@@ -448,7 +455,7 @@ globalkeys = awful.util.table.join(
         wibox[mouse.screen].visible = not wibox[mouse.screen].visible
     end),
     awful.key({ modkey, "Shift" }, "q", awesome.quit),
-    awful.key({ modkey, "Shift" }, "r", awesome.restart),
+    awful.key({ modkey, "Control" }, "r", awesome.restart),
 --    awful.key({ modkey, "Shift" }, "r", function ()
 --        promptbox[mouse.screen].text = awful.util.escape(awful.util.restart())
 --    end),
@@ -528,10 +535,6 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey }, "o",     awful.client.movetoscreen),
     awful.key({ modkey }, "Next",  function () awful.client.moveresize( 20,  20, -40, -40) end),
     awful.key({ modkey }, "Prior", function () awful.client.moveresize(-20, -20,  40,  40) end),
-    awful.key({ modkey }, "Down",  function () awful.client.moveresize(  0,  20,   0,   0) end),
-    awful.key({ modkey }, "Up",    function () awful.client.moveresize(  0, -20,   0,   0) end),
-    awful.key({ modkey }, "Left",  function () awful.client.moveresize(-20,   0,   0,   0) end),
-    awful.key({ modkey }, "Right", function () awful.client.moveresize( 20,   0,   0,   0) end),
     awful.key({ modkey, "Shift" }, "0", function (c) c.sticky = not c.sticky end),
     awful.key({ modkey, "Shift" }, "m", function (c) c:swap(awful.client.getmaster()) end),
 --    awful.key({ modkey, "Shift" }, "c", function (c) exec("kill -CONT " .. c.pid) end),
