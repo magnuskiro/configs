@@ -57,15 +57,16 @@ layouts = {
 
 -- {{{ Tags
 tags = {
-  names  = { "main-shell", "web", "pdf", "code-shell", "code", 6, 7, "im", "media" },
+  names  = { "bash", "web", "pdf/compile", "vi/tex", "vi/tex", "Git/bash", "IDE/Code", "im", "media" },
   layout = { layouts[1], layouts[4], layouts[1], layouts[1], layouts[1],
-             layouts[1], layouts[1], layouts[1], layouts[1]
+             layouts[1], layouts[1], layouts[1], layouts[4]
 }}
 
 for s = 1, scount do
   tags[s] = awful.tag(tags.names, s, tags.layout)
   for i, t in ipairs(tags[s]) do
-      awful.tag.setproperty(t, "mwfact", i==5 and 0.13  or  0.5)
+      awful.tag.setproperty(t, "mwfact", 0.5)
+--      awful.tag.setproperty(t, "mwfact", i==5 and 0.13  or  0.5)
 --      awful.tag.setproperty(t, "hide",  (i==6 or  i==7) and true)
   end
 end
