@@ -26,3 +26,8 @@ alias compile="~/repos/scripts/compile.sh"
 # IRC, irssi screens. 
 alias ircsrv="screen -RD -S irc irssi"
 alias irc="ssh kiro@s.magnuskiro.no -p 40596 -t 'screen -RD -S irc irssi'"
+
+# copy to clipboard.
+alias toc="~/repos/scripts/toclip.sh"
+
+
