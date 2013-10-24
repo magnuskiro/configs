@@ -14,7 +14,6 @@
 -- Kirø
 -- }}}
 
-
 -- {{{ Libraries
 require("awful")
 require("awful.rules")
@@ -70,6 +69,8 @@ for s = 1, scount do
 --      awful.tag.setproperty(t, "hide",  (i==6 or  i==7) and true)
   end
 end
+
+
 
 -- }}}
 
