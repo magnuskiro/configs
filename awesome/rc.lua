@@ -680,6 +680,36 @@ end
 -- }}}
 -- }}}
 
+--{{{ Mouse movement
+
+-- Simple function to move the mouse to the coordinates set above.
+local function move_mouse(x_co, y_co)
+    mouse.coords({ x=x_co, y=y_co })
+end
+
+-- if there are two or more screens enable infinite screen array loop illusion.
+-- (isali)
+if screen.count() >=2 then 
+	-- start isali timer. 
+    mouse_timer = timer({timeout = 0.1})
+	-- add signal listening for isali timer. 
+    mouse_timer:add_signal("timeout", function()
+		-- if mouse curson hits right screen edge
+        if mouse.coords()["x"] >= 3359 then
+			-- move cursor to left screen edge
+    		move_mouse( 1, mouse.coords()["y"]  )
+		-- if mouse cursor hits left screen edge
+    	elseif mouse.coords()["x"] <= 0 then 
+			-- move cursor to right screen edge. 
+    		move_mouse( 3358, mouse.coords()["y"]  )
+        end
+    end)
+	-- start timer to check for isali event. 
+    mouse_timer:start()
+end
+
+--}}}
+
 -- run network-manager
 os.execute("~/repos/scripts/run_once nm-applet &")
 os.execute("~/repos/scripts/run_once gnome-do &")
