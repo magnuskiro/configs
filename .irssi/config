@@ -102,9 +102,9 @@ chatnets = {
 
 channels = (
   { name = "#irssi"; chatnet = "ircnet"; autojoin = "No"; },
-  { name = "silc"; chatnet = "silc"; autojoin = "No"; },
   { name = "#samfundet"; chatnet = "OFTC"; autojoin = "yes"; },
   { name = "#smitit"; chatnet = "OFTC"; autojoin = "yes"; }
+  { name = "#valhalla"; chatnet = "OFTC"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -290,7 +290,10 @@ settings = {
 
 #THIS SECTION DEALS WITH YOUR HILIGHTS
 hilights = (
-  { text = "Nick"; nick = "no"; word = "no"; },
-  { text = "Name"; nick = "no"; word = "no"; }
+  { text = "[m|M]agnus"; nick = "yes"; word = "yes"; regexp = "yes"; },
+  { text = "[k|K]iro"; nick = "yes"; word = "yes"; regexp = "yes"; },
+  { text = "[k|K]irø"; nick = "yes"; word = "yes"; regexp = "yes"; },
+  { text = "magnuskiro"; nick = "yes"; word = "yes"; regexp = "yes"; }
 );
+
 

@@ -14,14 +14,13 @@
 -- Kirø
 -- }}}
 
-
 -- {{{ Libraries
 require("awful")
 require("awful.rules")
 require("awful.autofocus")
 -- User libraries
-vicious = require("vicious")
-scratch = require("scratch")
+local vicious = require("vicious")
+local scratch = require("scratch")
 -- }}}
 
 -- Load Debian menu entries
@@ -40,7 +39,7 @@ local scount = screen.count()
 beautiful.init(home .. "/.config/awesome/zenburn.lua")
 
 terminal = "x-terminal-emulator"
-editor = os.getenv("EDITOR") or "editor"
+editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Window management layouts
@@ -57,18 +56,22 @@ layouts = {
 
 -- {{{ Tags
 tags = {
-  names  = { "main-shell", "web", "pdf", "code-shell", "code", 6, 7, "im", "media" },
+  names  = { "bash", "web", "pdf/compile", "vi/tex", "vi/tex", "Git/bash", "IDE/Code", "im", "media" },
   layout = { layouts[1], layouts[4], layouts[1], layouts[1], layouts[1],
-             layouts[1], layouts[1], layouts[1], layouts[1]
+             layouts[1], layouts[1], layouts[1], layouts[4]
 }}
 
 for s = 1, scount do
   tags[s] = awful.tag(tags.names, s, tags.layout)
   for i, t in ipairs(tags[s]) do
-      awful.tag.setproperty(t, "mwfact", i==5 and 0.13  or  0.5)
+      awful.tag.setproperty(t, "mwfact", 0.5)
+--      awful.tag.setproperty(t, "mwfact", i==5 and 0.13  or  0.5)
 --      awful.tag.setproperty(t, "hide",  (i==6 or  i==7) and true)
   end
 end
+
+
+
 -- }}}
 
 -- {{{ Menu
@@ -381,9 +384,15 @@ globalkeys = awful.util.table.join(
 
     -- {{{ Multimedia keys
     awful.key({}, "#160", function () exec("xscreensaver-command -lock") end),
+-- sound commands
     awful.key({}, "#121", function () exec("amixer -D pulse set Master togglee") end), -- Mute sound.  
+    awful.key({ modkey }, "m", function () exec("amixer -D pulse set Master togglee") end), -- Mute sound.  
     awful.key({}, "#122", function () exec("amixer -c 0 sset Master 2%- umute") end), -- increase sound 
+    awful.key({ modkey }, "Down", function () exec("amixer -c 0 sset Master 2%- umute") end), -- increase sound 
     awful.key({}, "#123", function () exec("amixer -c 0 sset Master 2%+ umute") end), -- decrease sound
+    awful.key({ modkey }, "Up", function () exec("amixer -c 0 sset Master 2%+ umute") end), -- decrease sound
+-- END sound commands
+
     awful.key({}, "#232", function () exec("plight.py -s") end),
     awful.key({}, "#233", function () exec("plight.py -s") end),
   --awful.key({}, "#150", function () exec("sudo /usr/sbin/pm-suspend")   end),
@@ -448,7 +457,7 @@ globalkeys = awful.util.table.join(
         wibox[mouse.screen].visible = not wibox[mouse.screen].visible
     end),
     awful.key({ modkey, "Shift" }, "q", awesome.quit),
-    awful.key({ modkey, "Shift" }, "r", awesome.restart),
+    awful.key({ modkey, "Control" }, "r", awesome.restart),
 --    awful.key({ modkey, "Shift" }, "r", function ()
 --        promptbox[mouse.screen].text = awful.util.escape(awful.util.restart())
 --    end),
@@ -528,15 +537,11 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey }, "o",     awful.client.movetoscreen),
     awful.key({ modkey }, "Next",  function () awful.client.moveresize( 20,  20, -40, -40) end),
     awful.key({ modkey }, "Prior", function () awful.client.moveresize(-20, -20,  40,  40) end),
-    awful.key({ modkey }, "Down",  function () awful.client.moveresize(  0,  20,   0,   0) end),
-    awful.key({ modkey }, "Up",    function () awful.client.moveresize(  0, -20,   0,   0) end),
-    awful.key({ modkey }, "Left",  function () awful.client.moveresize(-20,   0,   0,   0) end),
-    awful.key({ modkey }, "Right", function () awful.client.moveresize( 20,   0,   0,   0) end),
     awful.key({ modkey, "Shift" }, "0", function (c) c.sticky = not c.sticky end),
     awful.key({ modkey, "Shift" }, "m", function (c) c:swap(awful.client.getmaster()) end),
 --    awful.key({ modkey, "Shift" }, "c", function (c) exec("kill -CONT " .. c.pid) end),
 --    awful.key({ modkey, "Shift" }, "s", function (c) exec("kill -STOP " .. c.pid) end),
-    awful.key({ modkey, "Shift" }, "t", function (c)
+    awful.key({ modkey, }, "t", function (c)
         if   c.titlebar then awful.titlebar.remove(c)
         else awful.titlebar.add(c, { modkey = modkey }) end
     end),
@@ -674,6 +679,36 @@ for s = 1, scount do screen[s]:add_signal("arrange", function ()
 end
 -- }}}
 -- }}}
+
+--{{{ Mouse movement
+
+-- Simple function to move the mouse to the coordinates set above.
+local function move_mouse(x_co, y_co)
+    mouse.coords({ x=x_co, y=y_co })
+end
+
+-- if there are two or more screens enable infinite screen array loop illusion.
+-- (isali)
+if screen.count() >=2 then 
+	-- start isali timer. 
+    mouse_timer = timer({timeout = 0.1})
+	-- add signal listening for isali timer. 
+    mouse_timer:add_signal("timeout", function()
+		-- if mouse curson hits right screen edge
+        if mouse.coords()["x"] >= 3359 then
+			-- move cursor to left screen edge
+    		move_mouse( 1, mouse.coords()["y"]  )
+		-- if mouse cursor hits left screen edge
+    	elseif mouse.coords()["x"] <= 0 then 
+			-- move cursor to right screen edge. 
+    		move_mouse( 3358, mouse.coords()["y"]  )
+        end
+    end)
+	-- start timer to check for isali event. 
+    mouse_timer:start()
+end
+
+--}}}
 
 -- run network-manager
 os.execute("~/repos/scripts/run_once nm-applet &")
