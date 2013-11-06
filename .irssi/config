@@ -293,7 +293,7 @@ hilights = (
   { text = "[m|M]agnus"; nick = "yes"; word = "yes"; regexp = "yes"; },
   { text = "[k|K]iro"; nick = "yes"; word = "yes"; regexp = "yes"; },
   { text = "[k|K]irø"; nick = "yes"; word = "yes"; regexp = "yes"; },
-  { text = "magnuskiro"; nick = "yes"; word = "yes"; regexp = "yes"; },
+  { text = "magnuskiro"; nick = "yes"; word = "yes"; regexp = "yes"; }
 );
 
 
