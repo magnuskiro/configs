@@ -384,17 +384,11 @@ globalkeys = awful.util.table.join(
 
     -- {{{ Multimedia keys
     awful.key({}, "#160", function () exec("xscreensaver-command -lock") end),
--- sound commands
+-- START sound commands
     awful.key({ modkey }, "m", function () exec("amixer -q sset Master toggle") end), -- Mute sound.  
     awful.key({ modkey }, "Down", function () exec("amixer -q sset Master 2%- umute") end), -- increase sound 
     awful.key({ modkey }, "Up", function () exec("amixer -q sset Master 2%+ umute") end), -- decrease sound
-   
--- Laptop only ?? 
---	awful.key({}, "#121", function () exec("amixer -D pulse set Master togglee") end), -- Mute sound.  
---  awful.key({}, "#122", function () exec("amixer -c 0 sset Master 2%- umute") end), -- increase sound 
---  awful.key({}, "#123", function () exec("amixer -c 0 sset Master 2%+ umute") end), -- decrease sound
-
-
+  -- Media keys on laptop.  
     awful.key({}, "#121", function () exec("amixer -q sset Master toggle") end), -- Mute sound.  
     awful.key({}, "#122", function () exec("amixer -q sset Master 2%- umute") end), -- increase sound 
     awful.key({}, "#123", function () exec("amixer -q sset Master 2%+ umute") end), -- decrease sound
