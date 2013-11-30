@@ -57,7 +57,7 @@ layouts = {
 -- {{{ Tags
 tags = {
   names  = { "bash", "web", "pdf/compile", "vi/tex", "vi/tex", "Git/bash", "IDE/Code", "im", "media" },
-  layout = { layouts[1], layouts[4], layouts[1], layouts[1], layouts[1],
+  layout = { layouts[3], layouts[4], layouts[1], layouts[1], layouts[1],
              layouts[1], layouts[1], layouts[1], layouts[4]
 }}
 
@@ -606,23 +606,26 @@ awful.rules.rules = {
       border_color = beautiful.border_normal }
     },
 
-	{ rule = { class = "Spotify", instance="spotify" },
-      properties = { tag = tags['media'] } },
+	{ rule = { class = "Spotify" },
+    	properties = { tag = tags[2][9], switchtotag = true } 
+	},
 
     { rule = { class = "Skype",  instance = "im" },
-      properties = { tag = tags[scount][7] } },
+    	properties = { tag = tags[1][8] } 
+	},
     
-	{ rule = { class = "irc",  instance = "im" },
-      properties = { tag = tags[scount][7] } },	
-    
-	{ rule = { class = "Firefox",  instance = "web" },
-      properties = { tag = tags['web'] } },
-    
+	{ rule = { name = "irc", instance = "irc"},
+    	properties = { tag = tags[1][8] } 
+	},	
 
-    { rule = { class = "Emacs",    instance = "_Remember_" },
-      properties = { floating = true }, callback = awful.titlebar.add  },
-    { rule = { class = "Xmessage", instance = "xmessage" },
-      properties = { floating = true }, callback = awful.titlebar.add  },
+	{ rule = { class = "Firefox" },
+		properties = { tag = tags[1][2] }
+	},
+	    
+--	{ rule = { class = "Firefox" },
+--		properties = { tag = tags[0][2] } 
+--	},
+   
     { rule = { instance = "plugin-container" },
       properties = { floating = true }, callback = awful.titlebar.add  },
     { rule = { class = "Akregator" },   properties = { tag = tags[scount][8]}},
@@ -721,8 +724,8 @@ end
 -- run network-manager
 os.execute("~/repos/scripts/run_once nm-applet &")
 os.execute("~/repos/scripts/run_once gnome-do &")
-os.execute("~/repos/scripts/run_once skype &")
 os.execute("~/repos/scripts/run_once irc &")
-os.execute("~/repos/scripts/run_once xscreensaver &")
+os.execute("~/repos/scripts/run_once spotify &")
+os.execute("~/repos/scripts/run_once firefox &")
 os.execute("dropbox start")
 
