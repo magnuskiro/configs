@@ -57,8 +57,8 @@ layouts = {
 -- {{{ Tags
 tags = {
   names  = { "bash", "web", "pdf/compile", "vi/tex", "vi/tex", "Git/bash", "IDE/Code", "im", "media" },
-  layout = { layouts[1], layouts[4], layouts[1], layouts[1], layouts[1],
-             layouts[1], layouts[1], layouts[1], layouts[4]
+  layout = { layouts[3], layouts[4], layouts[4], layouts[1], layouts[1],
+             layouts[4], layouts[1], layouts[1], layouts[4]
 }}
 
 for s = 1, scount do
@@ -221,8 +221,8 @@ vicious.register(volwidget, vicious.widgets.volume,
 volbar.widget:buttons(awful.util.table.join(
    awful.button({ }, 1, function () exec("amixer") end),
    awful.button({ }, 2, function () exec("amixer -D pulse set Master toggle")   end),
-   awful.button({ }, 4, function () exec("amixer -q set PCM 2%+", false) end),
-   awful.button({ }, 5, function () exec("amixer -q set PCM 2%-", false) end)
+   awful.button({ }, 4, function () exec("amixer -q set Master 2%+", false) end),
+   awful.button({ }, 5, function () exec("amixer -q set Master 2%-", false) end)
 )) -- Register assigned buttons
 volwidget:buttons(volbar.widget:buttons())
 -- }}}
@@ -384,13 +384,15 @@ globalkeys = awful.util.table.join(
 
     -- {{{ Multimedia keys
     awful.key({}, "#160", function () exec("xscreensaver-command -lock") end),
--- sound commands
-    awful.key({}, "#121", function () exec("amixer -D pulse set Master togglee") end), -- Mute sound.  
-    awful.key({ modkey }, "m", function () exec("amixer -D pulse set Master togglee") end), -- Mute sound.  
-    awful.key({}, "#122", function () exec("amixer -c 0 sset Master 2%- umute") end), -- increase sound 
-    awful.key({ modkey }, "Down", function () exec("amixer -c 0 sset Master 2%- umute") end), -- increase sound 
-    awful.key({}, "#123", function () exec("amixer -c 0 sset Master 2%+ umute") end), -- decrease sound
-    awful.key({ modkey }, "Up", function () exec("amixer -c 0 sset Master 2%+ umute") end), -- decrease sound
+-- START sound commands
+    awful.key({ modkey }, "m", function () exec("amixer -q sset Master toggle") end), -- Mute sound.  
+    awful.key({ modkey }, "Down", function () exec("amixer -q sset Master 2%- umute") end), -- increase sound 
+    awful.key({ modkey }, "Up", function () exec("amixer -q sset Master 2%+ umute") end), -- decrease sound
+  -- Media keys on laptop.  
+    awful.key({}, "#121", function () exec("amixer -q sset Master toggle") end), -- Mute sound.  
+    awful.key({}, "#122", function () exec("amixer -q sset Master 2%- umute") end), -- increase sound 
+    awful.key({}, "#123", function () exec("amixer -q sset Master 2%+ umute") end), -- decrease sound
+
 -- END sound commands
 
     awful.key({}, "#232", function () exec("plight.py -s") end),
@@ -588,46 +590,6 @@ end
 root.keys(globalkeys)
 -- }}}
 
-
--- {{{ Rules
-awful.rules.rules = {
-    { rule = { }, properties = {
-      focus = true,      size_hints_honor = false,
-      keys = clientkeys, buttons = clientbuttons,
-      border_width = beautiful.border_width,
-      border_color = beautiful.border_normal }
-    },
-
-	{ rule = { class = "Spotify", instance="spotify" },
-      properties = { tag = tags['media'] } },
-
-    { rule = { class = "Skype",  instance = "im" },
-      properties = { tag = tags[scount][7] } },
-    
-	{ rule = { class = "irc",  instance = "im" },
-      properties = { tag = tags[scount][7] } },	
-    
-	{ rule = { class = "Firefox",  instance = "web" },
-      properties = { tag = tags['web'] } },
-    
-
-    { rule = { class = "Emacs",    instance = "_Remember_" },
-      properties = { floating = true }, callback = awful.titlebar.add  },
-    { rule = { class = "Xmessage", instance = "xmessage" },
-      properties = { floating = true }, callback = awful.titlebar.add  },
-    { rule = { instance = "plugin-container" },
-      properties = { floating = true }, callback = awful.titlebar.add  },
-    { rule = { class = "Akregator" },   properties = { tag = tags[scount][8]}},
-    { rule = { name  = "Alpine" },      properties = { tag = tags[1][4]} },
-    { rule = { class = "Gajim" },       properties = { tag = tags[1][5]} },
-    { rule = { class = "Ark" },         properties = { floating = true } },
-    { rule = { class = "Geeqie" },      properties = { floating = true } },
-    { rule = { class = "ROX-Filer" },   properties = { floating = true } },
-    { rule = { class = "Pinentry.*" },  properties = { floating = true } },
-}
--- }}}
-
-
 -- {{{ Signals
 --
 -- {{{ Manage signal handler
@@ -710,11 +672,54 @@ end
 
 --}}}
 
--- run network-manager
+
+-- {{{ Rules
+awful.rules.rules = {
+    { rule = { }, properties = {
+      focus = true,      size_hints_honor = false,
+      keys = clientkeys, buttons = clientbuttons,
+      border_width = beautiful.border_width,
+      border_color = beautiful.border_normal }
+    },
+
+    { rule = { class = "Spotify" },
+        properties = { tag = tags[2][9], switchtotag = true }
+    },
+
+    { rule = { class = "Skype",  instance = "im" },
+        properties = { tag = tags[1][8] }
+    },
+
+    { rule = { name = "irc", instance = "irc"},
+        properties = { tag = tags[1][8] }
+    },
+
+    { rule = { class = "Firefox" },
+        properties = { tag = tags[1][2] }
+    },
+
+    { rule = { class = "Deluge" },
+        properties = { tag = tags[1][3] }
+    },
+
+    { rule = { instance = "plugin-container" },
+      properties = { floating = true }, callback = awful.titlebar.add  },
+    { rule = { class = "Akregator" },   properties = { tag = tags[scount][8]}},
+    { rule = { name  = "Alpine" },      properties = { tag = tags[1][4]} },
+    { rule = { class = "Gajim" },       properties = { tag = tags[1][5]} },
+    { rule = { class = "Ark" },         properties = { floating = true } },
+    { rule = { class = "Geeqie" },      properties = { floating = true } },
+    { rule = { class = "ROX-Filer" },   properties = { floating = true } },
+    { rule = { class = "Pinentry.*" },  properties = { floating = true } },
+}
+-- }}}
+
+-- Starting applications.
 os.execute("~/repos/scripts/run_once nm-applet &")
 os.execute("~/repos/scripts/run_once gnome-do &")
-os.execute("~/repos/scripts/run_once skype &")
+os.execute("~/repos/scripts/run_once spotify &")
+os.execute("~/repos/scripts/run_once firefox &")
+os.execute("~/repos/scripts/run_once deluge &")
 os.execute("~/repos/scripts/run_once irc &")
-os.execute("~/repos/scripts/run_once xscreensaver &")
 os.execute("dropbox start")
 
