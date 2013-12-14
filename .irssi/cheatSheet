@@ -1,0 +1,13 @@
+connect to a server    /connect server
+change nickname        /nick nickname
+join a channel         /join #channel
+leave channel          /part
+close window           /wc
+switch windows         alt+left/right arrow
+switch windows         /win #
+set away status        /away message
+cancel away status     /away
+private message        /q nickname
+close private message  /q
+disconnect from server /disconnect
+exit irrsi             /exit
