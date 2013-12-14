@@ -38,7 +38,7 @@ local scount = screen.count()
 -- Beautiful theme
 beautiful.init(home .. "/.config/awesome/zenburn.lua")
 
-terminal = "x-terminal-emulator"
+terminal = "xfce4-terminal"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -695,11 +695,11 @@ awful.rules.rules = {
     },
 
     { rule = { class = "Firefox" },
-        properties = { tag = tags[1][2] }
+        properties = { tag = tags[1][2], switchtotag = true }
     },
 
     { rule = { class = "Deluge" },
-        properties = { tag = tags[1][3] }
+        properties = { tag = tags[1][3], switchtotag = true }
     },
 
     { rule = { instance = "plugin-container" },
@@ -717,9 +717,12 @@ awful.rules.rules = {
 -- Starting applications.
 os.execute("~/repos/scripts/run_once nm-applet &")
 os.execute("~/repos/scripts/run_once gnome-do &")
-os.execute("~/repos/scripts/run_once spotify &")
 os.execute("~/repos/scripts/run_once firefox &")
+os.execute("~/repos/scripts/run_once spotify &")
 os.execute("~/repos/scripts/run_once deluge &")
 os.execute("~/repos/scripts/run_once irc &")
+# on stout
+os.execute("~/repos/scripts/run_once ~/.dropbox-dist/dropboxd &")
+# on IPA(laptop)
 os.execute("dropbox start")
 
