@@ -1,6 +1,6 @@
 " Vim color file
-" Maintainer:	David Schweikert <dws@ee.ethz.ch>
-" Last Change:	2006 Apr 30
+" Maintainer:	Magnus Kiro
+" Last Change:	2013 Dec 12
 
 hi clear
 
