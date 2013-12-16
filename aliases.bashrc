@@ -20,14 +20,14 @@ alias dock="~/repos/scripts/dockingStation.sh"
 # fortune - LMDE specific. 
 /usr/games/fortune -s
 
-# compilescript 
-alias compile="~/repos/scripts/compile.sh"
-
 # IRC, irssi screens. 
 alias ircsrv="screen -RD -S irc irssi"
-alias irc="ssh kiro@s.magnuskiro.no -p 40596 -t 'screen -RD -S irc irssi'"
+ircssh="ssh kiro@s.magnuskiro.no -p 40596 -t 'screen -RD -S irc irssi'"
+alias ircterm="x-terminal-emulator -e \"$ircssh\""
+alias ircssh="$ircssh"
 
 # copy to clipboard.
 alias toc="~/repos/scripts/toclip.sh"
 
-
+# reloading bashrc
+alias reload_basrc="source $HOME/.bashrc"

@@ -5,6 +5,7 @@ set guifont=DejaVu\ Sans\ Mono\ 10
 "Color schemes can be found in .vim/colors or /usr/share/vim/vim73/colors/ 
 " 'custom' is a modified delek
 colorscheme custom
+"colorscheme delek
 
 set shell=/bin/bash
 

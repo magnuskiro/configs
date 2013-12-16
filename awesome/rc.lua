@@ -38,7 +38,7 @@ local scount = screen.count()
 -- Beautiful theme
 beautiful.init(home .. "/.config/awesome/zenburn.lua")
 
-terminal = "x-terminal-emulator"
+terminal = "xfce4-terminal"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -590,46 +590,6 @@ end
 root.keys(globalkeys)
 -- }}}
 
-
--- {{{ Rules
-awful.rules.rules = {
-    { rule = { }, properties = {
-      focus = true,      size_hints_honor = false,
-      keys = clientkeys, buttons = clientbuttons,
-      border_width = beautiful.border_width,
-      border_color = beautiful.border_normal }
-    },
-
-	{ rule = { class = "Spotify", instance="spotify" },
-      properties = { tag = tags['media'] } },
-
-    { rule = { class = "Skype",  instance = "im" },
-      properties = { tag = tags[scount][7] } },
-    
-	{ rule = { class = "irc",  instance = "im" },
-      properties = { tag = tags[scount][7] } },	
-    
-	{ rule = { class = "Firefox",  instance = "web" },
-      properties = { tag = tags['web'] } },
-    
-
-    { rule = { class = "Emacs",    instance = "_Remember_" },
-      properties = { floating = true }, callback = awful.titlebar.add  },
-    { rule = { class = "Xmessage", instance = "xmessage" },
-      properties = { floating = true }, callback = awful.titlebar.add  },
-    { rule = { instance = "plugin-container" },
-      properties = { floating = true }, callback = awful.titlebar.add  },
-    { rule = { class = "Akregator" },   properties = { tag = tags[scount][8]}},
-    { rule = { name  = "Alpine" },      properties = { tag = tags[1][4]} },
-    { rule = { class = "Gajim" },       properties = { tag = tags[1][5]} },
-    { rule = { class = "Ark" },         properties = { floating = true } },
-    { rule = { class = "Geeqie" },      properties = { floating = true } },
-    { rule = { class = "ROX-Filer" },   properties = { floating = true } },
-    { rule = { class = "Pinentry.*" },  properties = { floating = true } },
-}
--- }}}
-
-
 -- {{{ Signals
 --
 -- {{{ Manage signal handler
@@ -712,11 +672,57 @@ end
 
 --}}}
 
--- run network-manager
+
+-- {{{ Rules
+awful.rules.rules = {
+    { rule = { }, properties = {
+      focus = true,      size_hints_honor = false,
+      keys = clientkeys, buttons = clientbuttons,
+      border_width = beautiful.border_width,
+      border_color = beautiful.border_normal }
+    },
+
+    { rule = { class = "Spotify" },
+        properties = { tag = tags[2][9], switchtotag = true }
+    },
+
+    { rule = { class = "Skype",  instance = "im" },
+        properties = { tag = tags[1][8] }
+    },
+
+    { rule = { name = "irc", instance = "irc"},
+        properties = { tag = tags[1][8] }
+    },
+
+    { rule = { class = "Firefox" },
+        properties = { tag = tags[1][2], switchtotag = true }
+    },
+
+    { rule = { class = "Deluge" },
+        properties = { tag = tags[1][3], switchtotag = true }
+    },
+
+    { rule = { instance = "plugin-container" },
+      properties = { floating = true }, callback = awful.titlebar.add  },
+    { rule = { class = "Akregator" },   properties = { tag = tags[scount][8]}},
+    { rule = { name  = "Alpine" },      properties = { tag = tags[1][4]} },
+    { rule = { class = "Gajim" },       properties = { tag = tags[1][5]} },
+    { rule = { class = "Ark" },         properties = { floating = true } },
+    { rule = { class = "Geeqie" },      properties = { floating = true } },
+    { rule = { class = "ROX-Filer" },   properties = { floating = true } },
+    { rule = { class = "Pinentry.*" },  properties = { floating = true } },
+}
+-- }}}
+
+-- Starting applications.
 os.execute("~/repos/scripts/run_once nm-applet &")
 os.execute("~/repos/scripts/run_once gnome-do &")
-os.execute("~/repos/scripts/run_once skype &")
+os.execute("~/repos/scripts/run_once firefox &")
+os.execute("~/repos/scripts/run_once spotify &")
+os.execute("~/repos/scripts/run_once deluge &")
 os.execute("~/repos/scripts/run_once irc &")
-os.execute("~/repos/scripts/run_once xscreensaver &")
+# on stout
+os.execute("~/repos/scripts/run_once ~/.dropbox-dist/dropboxd &")
+# on IPA(laptop)
 os.execute("dropbox start")
 

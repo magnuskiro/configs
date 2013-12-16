@@ -21,7 +21,7 @@ servers = (
     use_ssl = "no";
     ssl_verify = "no";
     autosendcmd = "/msg NickServ IDENTIFY password username";
-	autoconnect = "yes";
+    autoconnect = "yes";
   },
   {
     address = "irc.gamesurge.net";
@@ -103,7 +103,7 @@ chatnets = {
 channels = (
   { name = "#irssi"; chatnet = "ircnet"; autojoin = "No"; },
   { name = "#samfundet"; chatnet = "OFTC"; autojoin = "yes"; },
-  { name = "#smitit"; chatnet = "OFTC"; autojoin = "yes"; }
+  { name = "#smitit"; chatnet = "OFTC"; autojoin = "yes"; },
   { name = "#valhalla"; chatnet = "OFTC"; autojoin = "yes"; }
 );
 
