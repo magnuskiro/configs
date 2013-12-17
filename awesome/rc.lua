@@ -58,7 +58,7 @@ layouts = {
 tags = {
   names  = { "bash", "web", "pdf/compile", "vi/tex", "vi/tex", "Git/bash", "IDE/Code", "im", "media" },
   layout = { layouts[3], layouts[4], layouts[4], layouts[1], layouts[1],
-             layouts[4], layouts[1], layouts[1], layouts[4]
+             layouts[1], layouts[4], layouts[1], layouts[4]
 }}
 
 for s = 1, scount do
@@ -683,7 +683,7 @@ awful.rules.rules = {
     },
 
     { rule = { class = "Spotify" },
-        properties = { tag = tags[2][9], switchtotag = true }
+        properties = { tag = tags[1][9], switchtotag = true }
     },
 
     { rule = { class = "Skype",  instance = "im" },
@@ -721,8 +721,8 @@ os.execute("~/repos/scripts/run_once firefox &")
 os.execute("~/repos/scripts/run_once spotify &")
 os.execute("~/repos/scripts/run_once deluge &")
 os.execute("~/repos/scripts/run_once irc &")
-# on stout
+-- on stout
 os.execute("~/repos/scripts/run_once ~/.dropbox-dist/dropboxd &")
-# on IPA(laptop)
+-- on IPA(laptop)
 os.execute("dropbox start")
 

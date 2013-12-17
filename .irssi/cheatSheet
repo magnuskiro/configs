@@ -11,3 +11,4 @@ private message        /q nickname
 close private message  /q
 disconnect from server /disconnect
 exit irrsi             /exit
+echo infor about user	/whois username

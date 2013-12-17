@@ -1,7 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/home/kiro/repos'
 let g:netrw_dirhist_2='/home/kiro/studentmediene/studentmediene.no/templates/studentmediene.no/language/en-GB'
 let g:netrw_dirhist_3='/home/kiro/repos'
-let g:netrw_dirhist_4='/home/kiro/repos/configs/.vim'
-let g:netrw_dirhist_5='/home/kiro/repos/configs'
+let g:netrw_dirhist_4='/home/kiro/temp'
