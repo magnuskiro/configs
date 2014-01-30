@@ -14,6 +14,7 @@
     ui = always
 [core]
     editor = vim
+	autocrlf = input
 [alias]
 	pl = pull
 	ps = push
