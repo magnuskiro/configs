@@ -717,12 +717,12 @@ awful.rules.rules = {
 -- Starting applications.
 os.execute("~/repos/scripts/run_once nm-applet &")
 os.execute("~/repos/scripts/run_once gnome-do &")
-os.execute("~/repos/scripts/run_once firefox &")
-os.execute("~/repos/scripts/run_once spotify &")
 os.execute("~/repos/scripts/run_once deluge &")
-os.execute("~/repos/scripts/run_once irc &")
+os.execute("~/repos/scripts/run_once spotify &")
+os.execute("~/repos/scripts/run_once firefox &")
 -- on stout
 os.execute("~/repos/scripts/run_once ~/.dropbox-dist/dropboxd &")
 -- on IPA(laptop)
 os.execute("dropbox start")
+os.execute("~/repos/scripts/run_once xscreensaver &")
 
