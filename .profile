@@ -23,10 +23,13 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+xrandr --output HDMI-0 --auto --primary
+xrandr --output DisplayPort-0 --mode 1920x1080 --right-of HDMI-0
+
 # extra path variables for development and such.
-export JAVA_HOME=/usr/lib/jvm/jdk1.7.0
-export JDK_HOME=/usr/lib/jvm/jdk1.7.0/bin
-export M2_HOME=/usr/local/apache-maven/apache-maven-3.0.4
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+export JDK_HOME=/usr/lib/jvm/java-7-openjdk-amd64/bin
+export M2_HOME=/usr/local/apache-maven
 export M2=$M2_HOME/bin
 export IDEA=/usr/local/idea/bin
 export PYCHARM=/usr/local/pycharm/bin
