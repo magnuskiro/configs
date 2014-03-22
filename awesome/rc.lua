@@ -725,7 +725,5 @@ os.execute("~/repos/scripts/run_once deluge &")
 os.execute("~/repos/scripts/run_once spotify &")
 os.execute("~/repos/scripts/run_once firefox &")
 os.execute("~/repos/scripts/run_once owncloud &")
--- on IPA(laptop)
-os.execute("dropbox start")
 os.execute("~/repos/scripts/run_once xscreensaver &")
 
