@@ -107,5 +107,9 @@ fi
 source ~/repos/configs/aliases.bashrc
 source ~/repos/configs/color.bashrc
 
-#xrandr --output HDMI-0 --auto --primary
-#xrandr --output DisplayPort-0 --mode 1920x1080 --right-of HDMI-0
+# specialised split screen on my desktop computer.
+if [ `hostname` =  "stout" ];
+then
+	xrandr --output HDMI-0 --auto --primary
+	xrandr --output DisplayPort-0 --mode 1920x1080 --right-of HDMI-0
+fi
