@@ -15,7 +15,7 @@ alias a="ack-grep --color"
 
 ## TP x201 specifics
 # dockingStation
-alias dock="~/repos/scripts/dockingStation.sh"
+alias dock="~/repos/scripts/docking.sh"
 
 # fortune - LMDE specific. 
 /usr/games/fortune -s
