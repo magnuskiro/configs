@@ -11,7 +11,7 @@
 [color]
     status = auto
     branch = auto
-    ui = always
+	ui = auto
 [core]
     editor = vim
 	autocrlf = input
