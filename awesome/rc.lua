@@ -56,9 +56,9 @@ layouts = {
 
 -- {{{ Tags
 tags = {
-  names  = { "bash", "web", "pdf/compile", "vi/tex", "vi/tex", "Git/bash", "IDE/Code", "im", "media" },
-  layout = { layouts[3], layouts[4], layouts[4], layouts[1], layouts[1],
-             layouts[1], layouts[4], layouts[1], layouts[4]
+  names  = { "bash", "web", "deluge+", "pdf/compile", "vi/tex", "Git/bash", "IDE/Code", "media", "Spotify" },
+  layout = { layouts[3], layouts[4], layouts[4], layouts[4], layouts[1],
+             layouts[1], layouts[4], layouts[4], layouts[4]
 }}
 
 for s = 1, scount do
