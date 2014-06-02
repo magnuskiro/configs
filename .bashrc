@@ -103,6 +103,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+####
+# Personal modifications:
+####
+
 # importing personal touches. 
 source ~/repos/configs/aliases.bashrc
 source ~/repos/configs/color.bashrc
