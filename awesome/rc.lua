@@ -56,7 +56,7 @@ layouts = {
 
 -- {{{ Tags
 tags = {
-  names  = { "bash", "web", "deluge+", "pdf/compile", "vi/tex", "Git/bash", "IDE/Code", "media", "Spotify" },
+  names  = { "bash", "firefox", "chrome", "pdf/compile", "vi/tex", "Git/bash", "IDE/Code", "media", "Spotify" },
   layout = { layouts[3], layouts[4], layouts[4], layouts[4], layouts[1],
              layouts[1], layouts[4], layouts[4], layouts[4]
 }}
@@ -721,7 +721,6 @@ awful.rules.rules = {
 -- Starting applications.
 os.execute("~/repos/scripts/run_once nm-applet &")
 os.execute("~/repos/scripts/run_once gnome-do &")
-os.execute("~/repos/scripts/run_once deluge &")
 os.execute("~/repos/scripts/run_once spotify &")
 os.execute("~/repos/scripts/run_once firefox &")
 os.execute("~/repos/scripts/run_once owncloud &")
