@@ -22,7 +22,7 @@ alias dock="~/repos/scripts/docking.sh"
 
 # IRC, irssi screens. 
 alias ircsrv="screen -RD -S irc irssi"
-ircssh="ssh kiro@s.magnuskiro.no -p 40596 -t 'screen -RD -S irc irssi'"
+ircssh="ssh kiro@magnuskiro.no -p 40596 -t 'screen -RD -S irc irssi'"
 alias ircterm="x-terminal-emulator -e \"$ircssh\""
 alias ircssh="$ircssh"
 
