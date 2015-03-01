@@ -8,8 +8,11 @@
 -- {{{ Main
 theme = {}
 theme.confdir       = awful.util.getdir("config")
-theme.wallpaper_cmd = { "/usr/bin/nitrogen --restore" }
+--theme.wallpaper_cmd = { "/usr/bin/nitrogen --restore" }
 --theme.wallpaper_cmd = { "awsetbg /usr/share/awesome/themes/zenburn/zenburn-background.png" }
+-- awesetbg uses the last set wallpaper.
+-- 'awsetbg ~/repos/configs/awesome/neverGiveUp.jpg'
+theme.wallpaper_cmd = { "awsetbg" }
 -- }}}
 
 
