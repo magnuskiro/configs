@@ -34,6 +34,8 @@ export M2=$M2_HOME/bin
 export IDEA=/usr/local/idea/bin
 export PYCHARM=/usr/local/pycharm/bin
 export PLAY=/usr/local/play
+export ACTIVATOR=/usr/local/activator
 
-export PATH=$PATH:$M2_HOME:$M2:$JAVA_HOME:$JDK_HOME:$IDEA:$PYCHARM:$PLAY
+export
+PATH=$PATH:$M2_HOME:$M2:$JAVA_HOME:$JDK_HOME:$IDEA:$PYCHARM:$PLAY:$ACTIVATOR
 
