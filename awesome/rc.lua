@@ -57,7 +57,7 @@ layouts = {
 -- {{{ Tags
 tags = {
   names  = { "bash", "firefox", "chrome", "pdf/compile", "vi/tex", "Git/bash", "IDE/Code", "media", "Spotify" },
-  layout = { layouts[3], layouts[4], layouts[4], layouts[4], layouts[1],
+  layout = { layouts[3], layouts[4], layouts[4], layouts[3], layouts[1],
              layouts[1], layouts[4], layouts[4], layouts[4]
 }}
 

@@ -8,6 +8,7 @@ END
 # Aliases
 alias h="history"
 alias l="ls -lAhoF --color --show-control-chars"
+alias ll="ls -lAhoF --color --show-control-chars"
 alias cd..="cd .."
 
 # ack-grep. Does the same as grep, only better.
