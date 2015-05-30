@@ -1,9 +1,4 @@
 #!/bin/sh
-: <<'END'
-Append 
-"source ./aliases.bashrc"
-to ./.bashrc
-END
 
 # Aliases
 alias h="history"
@@ -17,9 +12,6 @@ alias a="ack-grep --color"
 ## TP x201 specifics
 # dockingStation
 alias dock="~/repos/scripts/docking.sh"
-
-# fortune - LMDE specific. 
-/usr/games/fortune -s
 
 # IRC, irssi screens. 
 alias ircsrv="screen -RD -S irc irssi"
