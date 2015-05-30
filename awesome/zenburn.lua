@@ -10,6 +10,8 @@ theme = {}
 theme.confdir       = awful.util.getdir("config")
 --theme.wallpaper_cmd = { "/usr/bin/nitrogen --restore" }
 --theme.wallpaper_cmd = { "awsetbg /usr/share/awesome/themes/zenburn/zenburn-background.png" }
+--theme.wallpaper_cmd = { "awsetbg /home/kiro/Pictures/backgrounds/importantdays.jpg" }
+--theme.wallpaper_cmd = { "awsetbg /home/kiro/Pictures/backgrounds/norwaynofap.jpg" }
 -- awesetbg uses the last set wallpaper.
 -- 'awsetbg ~/repos/configs/awesome/neverGiveUp.jpg'
 theme.wallpaper_cmd = { "awsetbg -i" }

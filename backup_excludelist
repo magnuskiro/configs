@@ -57,6 +57,7 @@ hs_err_pid5046.log
 .mateconfd
 .mozilla
 .neocon
+.npm
 pegadi.log
 .pegadi.usernames
 .pip
@@ -80,6 +81,7 @@ tmp
 .vim
 .viminfo
 .vimrc
+.wine
 .Xauthority
 .xchat2
 .xsession-errors
