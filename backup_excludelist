@@ -83,3 +83,13 @@ tmp
 .Xauthority
 .xchat2
 .xsession-errors
+.ssh
+.uoc
+.uoc_demo
+.xscreensaver
+.w3m
+.pydance
+.netrc
+.dvdcss
+.gtk-bookmarks
+

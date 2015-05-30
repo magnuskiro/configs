@@ -1,8 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/home/kiro/repos'
 let g:netrw_dirhist_2='/home/kiro/studentmediene/studentmediene.no/templates/studentmediene.no/language/en-GB'
 let g:netrw_dirhist_3='/home/kiro/repos'
 let g:netrw_dirhist_4='/home/kiro/temp'
 let g:netrw_dirhist_5='/home/kiro/repos/configs/awesome'
 let g:netrw_dirhist_6='/home/kiro/repos/power-hack/.git'
+let g:netrw_dirhist_7='/home/kiro/ntnu/tdt4853/demo'
