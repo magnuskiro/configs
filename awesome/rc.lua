@@ -56,8 +56,8 @@ layouts = {
 
 -- {{{ Tags
 tags = {
-  names  = { "bash", "firefox", "chrome", "pdf/compile", "vi/tex", "Git/bash", "IDE/Code", "media", "Spotify" },
-  layout = { layouts[3], layouts[4], layouts[4], layouts[3], layouts[1],
+  names  = { "bash", "web", "chrome", "pdf/compile", "vi/tex", "Git/bash", "IDE/Code", "media", "Spotify" },
+  layout = { layouts[3], layouts[4], layouts[3], layouts[3], layouts[1],
              layouts[1], layouts[4], layouts[4], layouts[4]
 }}
 
@@ -429,12 +429,11 @@ globalkeys = awful.util.table.join(
                 sexec("crodict "..words.." | ".."xmessage -timeout 10 -file -")
             end)
     end),
-    -- Open firefox with spesific search.
-	-- TODO test and make sure it works.  
+    -- Open chromium with spesific search.
 	awful.key({ modkey }, "F4", function ()
         awful.prompt.run({ prompt = "Web: " }, promptbox[mouse.screen].widget,
             function (command)
-                sexec("firefox 'http://yubnub.org/parser/parse?command="..command.."'")
+                sexec("chromium '"..command.."'")
                 awful.tag.viewonly(tags[scount][2])
             end)
     end),
@@ -657,13 +656,15 @@ if screen.count() >=2 then
 	-- add signal listening for isali timer. 
     mouse_timer:add_signal("timeout", function()
 		-- if mouse curson hits right screen edge
-        if mouse.coords()["x"] >= 3359 then
+		-- 3359= two times 1680 screens. 
+        if mouse.coords()["x"] >= 3839 then
 			-- move cursor to left screen edge
     		move_mouse( 1, mouse.coords()["y"]  )
 		-- if mouse cursor hits left screen edge
     	elseif mouse.coords()["x"] <= 0 then 
 			-- move cursor to right screen edge. 
-    		move_mouse( 3358, mouse.coords()["y"]  )
+			-- 3358
+    		move_mouse( 3838, mouse.coords()["y"]  )
         end
     end)
 	-- start timer to check for isali event. 
@@ -694,7 +695,7 @@ awful.rules.rules = {
         properties = { tag = tags[1][8] }
     },
 
-    { rule = { class = "Firefox" },
+    { rule = { class = "Chromium" },
         properties = { tag = tags[1][2], switchtotag = true }
     },
 
@@ -722,7 +723,7 @@ awful.rules.rules = {
 os.execute("~/repos/scripts/run_once nm-applet &")
 os.execute("~/repos/scripts/run_once gnome-do &")
 os.execute("~/repos/scripts/run_once spotify &")
-os.execute("~/repos/scripts/run_once firefox &")
+os.execute("~/repos/scripts/run_once chromium &")
 os.execute("~/repos/scripts/run_once owncloud &")
 os.execute("~/repos/scripts/run_once xscreensaver &")
 
