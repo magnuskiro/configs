@@ -1,0 +1,13 @@
+# extra path variables for development and such.
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_45
+export JDK_HOME=$JAVA_HOME/bin
+export M2_HOME=/usr/local/apache-maven
+export M2=$M2_HOME/bin
+export IDEA=/usr/local/idea/bin
+export PYCHARM=/usr/local/pycharm/bin
+export PLAY=/usr/local/play
+export ACTIVATOR=/usr/local/activator
+
+export
+PATH=$PATH:$M2_HOME:$M2:$JAVA_HOME:$JDK_HOME:$IDEA:$PYCHARM:$PLAY:$ACTIVATOR
+
