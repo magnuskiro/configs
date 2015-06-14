@@ -25,3 +25,4 @@ alias toc="~/repos/scripts/toclip.sh"
 # reloading bashrc
 alias reload_basrc="source $HOME/.bashrc"
 alias reload_profile="source $HOME/.profile"
+

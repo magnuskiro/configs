@@ -719,6 +719,7 @@ awful.rules.rules = {
 -- }}}
 
 -- Starting applications.
+os.execute("~/repos/scripts/run_once x-terminal-emulator &")
 os.execute("~/repos/scripts/run_once nm-applet &")
 os.execute("~/repos/scripts/run_once gnome-do &")
 os.execute("~/repos/scripts/run_once spotify &")
