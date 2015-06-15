@@ -56,8 +56,8 @@ layouts = {
 
 -- {{{ Tags
 tags = {
-  names  = { "bash", "web", "chrome", "pdf/compile", "vi/tex", "Git/bash", "IDE/Code", "media", "Spotify" },
-  layout = { layouts[3], layouts[4], layouts[3], layouts[3], layouts[1],
+  names  = { "todo/bash", "web", "-", "pdf/compile", "vi/tex", "Git/bash", "IDE/Code", "media", "Spotify" },
+  layout = { layouts[3], layouts[3], layouts[3], layouts[3], layouts[1],
              layouts[1], layouts[4], layouts[4], layouts[4]
 }}
 
@@ -651,20 +651,20 @@ end
 -- if there are two or more screens enable infinite screen array loop illusion.
 -- (isali)
 if screen.count() >=2 then 
+	--local width=3360 -- =2 screens with 1680 width
+	local width=5760 -- =3 screens with 1920 width
 	-- start isali timer. 
     mouse_timer = timer({timeout = 0.1})
 	-- add signal listening for isali timer. 
     mouse_timer:add_signal("timeout", function()
-		-- if mouse curson hits right screen edge
-		-- 3359= two times 1680 screens. 
-        if mouse.coords()["x"] >= 3839 then
+		-- if mouse cursor hits right screen edge
+        if mouse.coords()["x"] >= width-1 then
 			-- move cursor to left screen edge
     		move_mouse( 1, mouse.coords()["y"]  )
 		-- if mouse cursor hits left screen edge
     	elseif mouse.coords()["x"] <= 0 then 
 			-- move cursor to right screen edge. 
-			-- 3358
-    		move_mouse( 3838, mouse.coords()["y"]  )
+    		move_mouse( width-2, mouse.coords()["y"]  )
         end
     end)
 	-- start timer to check for isali event. 
