@@ -18,8 +18,10 @@ filetype plugin on
 syntax on
 
 " Set tabs at 4 spaces
-set tabstop=4
-set shiftwidth=4
+retab " change all existing tabs to 4 spaces.
+set tabstop=4 " defines how many spaces should be inserted instead of tab.
+set shiftwidth=4 " indentation space definition. 
+set expandtab " insert space when tab is pressed. 
 
 " Set matching [] and {}
 set showmatch
