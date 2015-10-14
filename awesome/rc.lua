@@ -56,8 +56,8 @@ layouts = {
 
 -- {{{ Tags
 tags = {
-  names  = { "todo/bash", "web", "-", "pdf/compile", "vi/tex", "Git/bash", "IDE/Code", "media", "Spotify" },
-  layout = { layouts[3], layouts[3], layouts[3], layouts[3], layouts[1],
+  names  = { "todo/bash", "web", "web2.0-", "pdf/compile", "vi/tex", "Git/bash", "IDE/Code", "media", "Spotify" },
+  layout = { layouts[3], layouts[3], layouts[3], layouts[3], layouts[3],
              layouts[1], layouts[4], layouts[4], layouts[4]
 }}
 
@@ -536,6 +536,10 @@ clientkeys = awful.util.table.join(
     end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey }, "o",     awful.client.movetoscreen),
+    awful.key({ modkey, altkey }, "2", function (c) awful.client.movetoscreen(c, 1) end),
+    awful.key({ modkey, altkey }, "1", function (c) awful.client.movetoscreen(c, 2) end),
+    awful.key({ modkey, altkey }, "3", function (c) awful.client.movetoscreen(c, 3) end),
+
     awful.key({ modkey }, "Next",  function () awful.client.moveresize( 20,  20, -40, -40) end),
     awful.key({ modkey }, "Prior", function () awful.client.moveresize(-20, -20,  40,  40) end),
     awful.key({ modkey, "Shift" }, "0", function (c) c.sticky = not c.sticky end),
@@ -727,4 +731,6 @@ os.execute("~/repos/scripts/run_once spotify &")
 os.execute("~/repos/scripts/run_once chromium &")
 os.execute("~/repos/scripts/run_once owncloud &")
 os.execute("~/repos/scripts/run_once xscreensaver &")
+os.execute("~/repos/scripts/run_once pidgin &")
+os.execute("~/repos/scripts/run_once skype &")
 
