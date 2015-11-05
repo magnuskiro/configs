@@ -28,3 +28,6 @@ alias reload_profile="source $HOME/.profile"
 
 # screen lock
 alias xl="xscreensaver-command -lock"
+
+# alias for perl whitespace fixup. 
+alias perl-ws-fix="$HOME/repos/scripts/perl-ws-fix.sh"
