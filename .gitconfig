@@ -31,3 +31,5 @@
     lg = log -p
     who = shortlog -s --
     today = log --committer='Magnus Kirø' --since='6am' --no-merges
+    s = stash
+    sp = stash pop
