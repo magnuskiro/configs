@@ -17,6 +17,7 @@
     autocrlf = input
 [alias]
     pl = pull
+    pr = pull --rebase
     ps = push
     st = status
     cm = commit -m
@@ -26,6 +27,9 @@
     co = checkout
     d = diff
     df = diff
-    l = log -p
+    l = log --oneline --graph
     lg = log -p
     who = shortlog -s --
+    today = log --committer='Magnus Kirø' --since='6am' --no-merges
+    s = stash
+    sp = stash pop

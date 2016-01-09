@@ -98,3 +98,11 @@ tmp
 .cpanm
 .thunderbird
 .vnc
+/home/kiro/src/vms/chef-rg/
+.vagrant.d/
+npm-debug.log
+.electron/
+.cinnamon/
+.chefdk/
+src/newenv/rg-env/dev/.workspace/
+newtest/rg-env/ubuntu:trusty/

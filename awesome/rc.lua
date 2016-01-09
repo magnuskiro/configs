@@ -62,11 +62,12 @@ layouts = {
 
 -- {{{ Tags
 tags = {
-    names  = { "bash/slack", "web-1", "web-2", "pdf/docs", "vim/tex", "git/bash", "ide/code", "sql/DB", "spotify" },
+    names  = { "bash/slack", "web-1.0", "web-2.0", "pdf/docs", "vim/tex", "git/bash", "ide/code", "sql/db", "spotify" },
     layout = {
         layouts[3], layouts[3], layouts[3], layouts[3], layouts[1],
         layouts[1], layouts[4], layouts[4], layouts[4]
-    }}
+    }
+}
 
 for s = 1, scount do
     tags[s] = awful.tag(tags.names, s, tags.layout)
@@ -571,6 +572,10 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle ),
     -- move program/window to next screen
     awful.key({ modkey }, "o",     awful.client.movetoscreen),
+    awful.key({ modkey, altkey }, "2", function (c) awful.client.movetoscreen(c, 1) end),
+    awful.key({ modkey, altkey }, "1", function (c) awful.client.movetoscreen(c, 2) end),
+    awful.key({ modkey, altkey }, "3", function (c) awful.client.movetoscreen(c, 3) end),
+
     awful.key({ modkey }, "Next",  function () awful.client.moveresize( 20,  20, -40, -40) end),
     awful.key({ modkey }, "Prior", function () awful.client.moveresize(-20, -20,  40,  40) end),
     awful.key({ modkey, "Shift" }, "0", function (c) c.sticky = not c.sticky end),
@@ -721,7 +726,7 @@ if screen.count() >=2 then
         if mouse.coords()["x"] >= dimensions[1]-1 then
             -- move cursor to left screen edge
             move_mouse( 1, mouse.coords()["y"]  )
-        -- if mouse cursor hits left screen edge
+            -- if mouse cursor hits left screen edge
         elseif mouse.coords()["x"] <= 0 then
             -- move cursor to right screen edge.
             move_mouse( dimensions[1]-2, mouse.coords()["y"]  )
@@ -782,4 +787,6 @@ os.execute("~/repos/scripts/run_once chromium &")
 os.execute("~/repos/scripts/run_once owncloud &")
 os.execute("~/repos/scripts/run_once xscreensaver &")
 os.execute("~/repos/scripts/run_once slack &")
+os.execute("~/repos/scripts/run_once skype &")
+
 
