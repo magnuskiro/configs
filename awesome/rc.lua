@@ -421,9 +421,9 @@ globalkeys = awful.util.table.join(
         exec("amixer -q sset " .. sound_settings["device"] .." 2%+ umute")
     end),
     -- Media keys on laptop.
-    awful.key({}, "#121", function () exec("amixer -q sset " .. soundDevice .. " toggle") end), -- Mute sound.  
-    awful.key({}, "#122", function () exec("amixer -q sset " .. soundDevice .. " 2%- umute") end), -- increase sound 
-    awful.key({}, "#123", function () exec("amixer -q sset " .. soundDevice .. " 2%+ umute") end), -- decrease sound
+    awful.key({}, "#121", function () exec("amixer -q sset " .. sound_settings["device"] .. " toggle") end), -- Mute sound.  
+    awful.key({}, "#122", function () exec("amixer -q sset " .. sound_settings["device"] .. " 2%- umute") end), -- increase sound 
+    awful.key({}, "#123", function () exec("amixer -q sset " .. sound_settings["device"] .. " 2%+ umute") end), -- decrease sound
     -- }}}END sound commands
 
     awful.key({}, "#232", function () exec("plight.py -s") end),
