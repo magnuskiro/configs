@@ -62,7 +62,7 @@ layouts = {
 
 -- {{{ Tags
 tags = {
-    names  = { "bash/slack", "web-1.0", "web-2.0", "pdf/docs", "vim/tex", "git/bash", "ide/code", "sql/db", "spotify" },
+    names  = { "bash/slack", "web-info", "web-work", "pdf/docs", "vim/tex", "git/bash", "ide/code", "sql/db", "spotify" },
     layout = {
         layouts[3], layouts[3], layouts[3], layouts[3], layouts[1],
         layouts[1], layouts[4], layouts[4], layouts[4]
@@ -418,7 +418,7 @@ globalkeys = awful.util.table.join(
     end),
     -- decrease sound
     awful.key({ modkey }, "Up", function ()
-        exec("amixer -q sset " .. sound_settings["device"] .." 2%+ umute")
+        exec("amixer -q sset " .. sound_settings["device"] .. " 2%+ umute")
     end),
     -- Media keys on laptop.
     awful.key({}, "#121", function () exec("amixer -q sset " .. sound_settings["device"] .. " toggle") end), -- Mute sound.  
@@ -782,11 +782,10 @@ awful.rules.rules = {
 os.execute("~/repos/scripts/run_once x-terminal-emulator &")
 os.execute("~/repos/scripts/run_once nm-applet &")
 os.execute("~/repos/scripts/run_once gnome-do &")
-os.execute("~/repos/scripts/run_once spotify &")
 os.execute("~/repos/scripts/run_once chromium &")
 os.execute("~/repos/scripts/run_once owncloud &")
 os.execute("~/repos/scripts/run_once xscreensaver &")
 os.execute("~/repos/scripts/run_once slack &")
-os.execute("~/repos/scripts/run_once skype &")
+os.execute("~/repos/scripts/run_once spotify &")
 
 
