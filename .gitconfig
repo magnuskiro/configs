@@ -19,6 +19,7 @@
     pl = pull
     pr = pull --rebase
     ps = push
+    pst = push --tags
     st = status
     cm = commit -m
     ca = commit -am
