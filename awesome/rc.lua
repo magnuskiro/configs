@@ -36,10 +36,13 @@ local sexec  = awful.util.spawn_with_shell
 local scount = screen.count()
 
 -- Sound Settings
--- when using a USB sound card, such as logitech wireless headset.
-local sound_settings = { device = "PCM", card = 1 }
--- when using the standard laptop sound card..
---local sound_settings = { device = "Master", card = 0 } 
+-- # Make some devices default in pulse. use pacmd, and:
+--   set-default-sink <name_of_sink>
+--   set-default-source <name_of_source>
+-- # when using a USB sound card, such as logitech wireless headset.
+--local sound_settings = { device = "PCM", card = 1 }
+-- # when using the standard laptop sound card..
+local sound_settings = { device = "Master", card = 1 } 
 
 -- Beautiful theme
 beautiful.init(home .. "/.config/awesome/zenburn.lua")
