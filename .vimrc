@@ -42,7 +42,7 @@ nnoremap <C-\> <C-]>
 
 " Spell check. Creates red background on the word that is wrong.
 " no/en/en_gb or other will also work. 
-setlocal spell spelllang=en_gb
+"setlocal spell spelllang=en_gb
 
 " Spelling
 " todo fix highlighting of spelling mistakes. 
