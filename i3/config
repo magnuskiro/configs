@@ -164,7 +164,7 @@ bar {
 }
 
 # lock screen
-bindsym $mod+l exec --no-startup-id i3lock -c 000000 -I 60 -i ~/Pictures/nl_logo.png && sleep 1
+bindsym $mod+l exec --no-startup-id i3lock -c 000000 -I 60 -t -i ~/Pictures/nl_logo.png && sleep 1
 
 # sound control: up | down | mute
 # https://wiki.archlinux.org/index.php/PulseAudio#Keyboard_volume_control
