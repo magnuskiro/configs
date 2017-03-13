@@ -47,5 +47,8 @@ nnoremap <C-\> <C-]>
 " Spelling
 " todo fix highlighting of spelling mistakes. 
 
+" F2: Toggle line numbers.
+nnoremap <F2> :set number!<CR>
+
 " F3: Toggle list (display unprintable characters).
 nnoremap <F3> :set list!<CR>
