@@ -786,9 +786,9 @@ os.execute("~/repos/scripts/run_once x-terminal-emulator &")
 os.execute("~/repos/scripts/run_once nm-applet &")
 os.execute("~/repos/scripts/run_once gnome-do &")
 os.execute("~/repos/scripts/run_once chromium &")
-os.execute("~/repos/scripts/run_once owncloud &")
+-- os.execute("~/repos/scripts/run_once owncloud &")
 os.execute("~/repos/scripts/run_once xscreensaver &")
 os.execute("~/repos/scripts/run_once slack &")
 os.execute("~/repos/scripts/run_once spotify &")
-
+-- os.execute("~/repos/scripts/run_once skype &")
 
