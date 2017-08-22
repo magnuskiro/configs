@@ -28,7 +28,7 @@
     co = checkout
     d = diff
     df = diff
-    l = log --oneline --graph
+    l = log --color --oneline --graph --pretty=format:'%C(yellow)%h%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset -%C(red)%d%Creset'
     lg = log -p
     who = shortlog -s --
     today = log --committer='Magnus Kirø' --since='6am' --no-merges
