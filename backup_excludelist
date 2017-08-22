@@ -3,6 +3,9 @@
 .activator
 .android
 .adobe
+.ansible
+.AndroidStudio2.2
+Android
 .cpan
 .bash_history
 .bash_logout
@@ -106,3 +109,9 @@ npm-debug.log
 .chefdk/
 src/newenv/rg-env/dev/.workspace/
 newtest/rg-env/ubuntu:trusty/
+.subversion
+.rbenv
+.oracle_jre_usage/
+.npm
+.pip
+VirtualBox VMs/
