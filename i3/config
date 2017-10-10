@@ -111,6 +111,10 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+# Navigate workspaces next / previous
+#bindsym $mod+Right workspace next
+#bindsym $mod+Left workspace prev
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -174,5 +178,5 @@ bindsym $mod+m exec pactl set-sink-mute 1 toggle
 
 
 exec google-chrome
-exec thunderbird
 exec idea
+exec slack
