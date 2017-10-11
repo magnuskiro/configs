@@ -169,6 +169,7 @@ bar {
 
 # lock screen
 bindsym $mod+l exec --no-startup-id i3lock -c 000000 -I 60 -t -i ~/Pictures/nl_logo.png && sleep 1
+exec --no-startup-id "xautolock -time 5 -locker 'i3lock' -notify 30 -notifier \"notify-send -t 2000 'Locking screen in 30 seconds'\""
 
 # sound control: up | down | mute
 # https://wiki.archlinux.org/index.php/PulseAudio#Keyboard_volume_control
@@ -176,7 +177,20 @@ bindsym $mod+Up exec pactl set-sink-volume 1 +5%
 bindsym $mod+Down exec pactl set-sink-volume 1 -5%
 bindsym $mod+m exec pactl set-sink-mute 1 toggle 
 
+# startup programs
+exec --no-startup-id "pidof xfce4-power-manager || xfce4-power-manager"
+exec --no-startup-id "pidof /usr/libexec/polkit-gnome-authentication-agent-1 || /usr/libexec/polkit-gnome-authentication-agent-1"
+exec --no-startup-id "pidof start-pulseaudio-x11 || start-pulseaudio-x11"
+exec --no-startup-id "pidof xfce4-volumed || xfce4-volumed"
+exec --no-startup-id "pidof xfsettingsd || xfsettingsd"
+exec --no-startup-id "gnome-keyring-daemon --start --components=pkcs11"
+exec --no-startup-id "gnome-keyring-daemon --start --components=secrets"
+exec --no-startup-id "pidof nm-applet || nm-applet --sm-disable"
 
-exec google-chrome
+exec pavucontrol
 exec idea
 exec slack
+exec google-chrome
+
+
+
