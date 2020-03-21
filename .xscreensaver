@@ -2,7 +2,7 @@
 # Written by xscreensaver-demo 5.30 for kiro on Fri Jun  5 15:11:55 2015.
 # http://www.jwz.org/xscreensaver/
 
-timeout:	0:05:00
+timeout:	1:00:00
 cycle:		0:05:00
 lock:		True
 lockTimeout:	0:05:00

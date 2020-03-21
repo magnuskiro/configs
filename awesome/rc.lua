@@ -42,7 +42,7 @@ local scount = screen.count()
 -- # when using a USB sound card, such as logitech wireless headset.
 --local sound_settings = { device = "PCM", card = 1 }
 -- # when using the standard laptop sound card..
-local sound_settings = { device = "Master", card = 1 } 
+local sound_settings = { device = "Master", card = 0 } 
 
 -- Beautiful theme
 beautiful.init(home .. "/.config/awesome/zenburn.lua")
@@ -785,10 +785,10 @@ awful.rules.rules = {
 os.execute("~/repos/scripts/run_once x-terminal-emulator &")
 os.execute("~/repos/scripts/run_once nm-applet &")
 os.execute("~/repos/scripts/run_once gnome-do &")
-os.execute("~/repos/scripts/run_once chromium &")
-os.execute("~/repos/scripts/run_once owncloud &")
+--os.execute("~/repos/scripts/run_once chromium &")
+--os.execute("~/repos/scripts/run_once owncloud &")
 os.execute("~/repos/scripts/run_once xscreensaver &")
-os.execute("~/repos/scripts/run_once slack &")
-os.execute("~/repos/scripts/run_once spotify &")
+--os.execute("~/repos/scripts/run_once slack &")
+--os.execute("~/repos/scripts/run_once spotify &")
 
 
