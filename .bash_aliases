@@ -9,6 +9,9 @@ alias cd..="cd .."
 # ack-grep. Does the same as grep, only better.
 alias a="ack-grep --color"
 
+# calculator
+alias calc="gnome-calculator"
+
 ## TP x201 specifics
 # dockingStation
 alias dock="~/repos/scripts/docking.sh"
@@ -23,7 +26,7 @@ alias ircssh="$ircssh"
 alias toc="~/repos/scripts/toclip.sh"
 
 # reloading bashrc
-alias reload_basrc="source $HOME/.bashrc"
+alias reload_bashhrc="source $HOME/.bashrc"
 alias reload_profile="source $HOME/.profile"
 
 # screen lock
