@@ -23,6 +23,7 @@
     st = status
     cm = commit -m
     ca = commit -am
+    cma = commit --amend
     b = branch
     br = branch
     co = checkout
