@@ -7,7 +7,7 @@ alias ll="ls -lash --color --show-control-chars"
 alias cd..="cd .."
 
 # ack-grep. Does the same as grep, only better.
-alias a="ack-grep --color"
+alias a="ack --color"
 
 # calculator
 alias calc="gnome-calculator"
@@ -35,6 +35,7 @@ alias xl="xscreensaver-command -lock"
 # alias for perl whitespace fixup. 
 alias perl-ws-fix="$HOME/repos/scripts/perl-ws-fix.sh"
 
+alias postman=/usr/local/share/Postman/app/Postman
 
 git_log_line (){
     git log -L$2,$3:$1
@@ -54,4 +55,3 @@ alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(
 # Delete all stopped containers and untagged images.
 alias dockerclean='dockercleanc || true && dockercleani'
 ####
-
