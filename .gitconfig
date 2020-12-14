@@ -25,7 +25,7 @@
     ca = commit -am
     cma = commit --amend
     b = branch
-    br = branch
+    br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
     co = checkout
     d = diff
     df = diff
@@ -35,3 +35,4 @@
     today = log --committer='Magnus Kirø' --since='6am' --no-merges
     s = stash
     sp = stash pop
+    undo = reset HEAD~1 --mixed
