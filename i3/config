@@ -111,16 +111,16 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # workspace screen assignment
-workspace 1 output eDP-1-1
+workspace 1 output DP-1-3
 workspace 2 output primary
-workspace 3 output 2 
-workspace 4 output eDP-1-1
-workspace 5 output primary
+workspace 3 output DP-1-1 
+workspace 4 output DP-1-2
+workspace 5 output DP-1-3
 workspace 6 output primary
-workspace 7 output 2
-workspace 8 output eDP-1-1 
-workspace 9 output eDP-1-1
-#workspace 0 output 
+workspace 7 output primary 
+workspace 8 output DP-1-2
+workspace 9 output DP-1-2
+workspace 0 output 
 
 
 # Navigate workspaces next / previous
@@ -195,39 +195,46 @@ exec --no-startup-id "xautolock -time 5 -locker 'i3lock' -notify 30 -notifier \"
 # https://wiki.archlinux.org/index.php/PulseAudio#Keyboard_volume_control
 # Get the sink "alsa_outpu~" from tab completion of the command on cli.
 
-# decrease volume
+# increase volume
 bindsym $mod+$alt+Up exec \
 pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo +5% && \
-pactl set-sink-volume bluez_sink.00_09_A7_24_41_14.a2dp_sink +5%
+pactl set-sink-volume alsa_output.usb-Logitech_Logitech_G930_Headset-00.analog-stereo +5% && \
+pactl set-sink-volume bluez_sink.00_09_A7_24_41_14.a2dp_sink +5% 
 
-# increase volume
+# decrease volume
 bindsym $mod+$alt+Down exec \
 pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo -5% && \
+pactl set-sink-volume alsa_output.usb-Logitech_Logitech_G930_Headset-00.analog-stereo -5% && \
 pactl set-sink-volume bluez_sink.00_09_A7_24_41_14.a2dp_sink -5%
 
 # mute with alt+m -keys
 bindsym $mod+$alt+m exec \
 pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle && \
+pactl set-sink-mute alsa_output.usb-Logitech_Logitech_G930_Headset-00.analog-stereo toggle && \
 pactl set-sink-mute bluez_sink.00_09_A7_24_41_14.a2dp_sink toggle
 
 # mute with m key
 bindsym $mod+m exec \
 pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle && \
+pactl set-sink-mute alsa_output.usb-Logitech_Logitech_G930_Headset-00.analog-stereo toggle && \
 pactl set-sink-mute bluez_sink.00_09_A7_24_41_14.a2dp_sink toggle
 
 # fn keys increase volume
 bindsym XF86AudioRaiseVolume exec \
 pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo +5% && \
+pactl set-sink-volume alsa_output.usb-Logitech_Logitech_G930_Headset-00.analog-stereo +5% && \
 pactl set-sink-volume bluez_sink.00_09_A7_24_41_14.a2dp_sink +5%
 
 # fn keys decrease volume
 bindsym XF86AudioLowerVolume exec \
 pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo -5% && \
+pactl set-sink-volume alsa_output.usb-Logitech_Logitech_G930_Headset-00.analog-stereo -5% && \
 pactl set-sink-volume bluez_sink.00_09_A7_24_41_14.a2dp_sink -5%
 
 # fn keys mute
 bindsym XF86AudioMute exec \
 pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle && \
+pactl set-sink-mute alsa_output.usb-Logitech_Logitech_G930_Headset-00.analog-stereo toggle && \
 pactl set-sink-mute bluez_sink.00_09_A7_24_41_14.a2dp_sink toggle
 ###
 
