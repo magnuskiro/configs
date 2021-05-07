@@ -55,3 +55,7 @@ alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(
 # Delete all stopped containers and untagged images.
 alias dockerclean='dockercleanc || true && dockercleani'
 ####
+
+# Apace Maven
+alias mci="mvn clean install"
+alias mcist="mvn clean install -DMaven.test.skip=true"
