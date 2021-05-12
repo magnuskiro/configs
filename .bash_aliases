@@ -59,3 +59,7 @@ alias dockerclean='dockercleanc || true && dockercleani'
 # Apace Maven
 alias mci="mvn clean install"
 alias mcist="mvn clean install -DMaven.test.skip=true"
+
+
+# intelliJ idea
+alias idea="idea.sh"
