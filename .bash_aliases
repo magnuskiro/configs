@@ -6,6 +6,9 @@ alias l="ls -lAhoF --color --show-control-chars"
 alias ll="ls -lash --color --show-control-chars"
 alias cd..="cd .."
 
+
+alias brew="/home/linuxbrew/.linuxbrew/bin/brew"
+
 # ack-grep. Does the same as grep, only better.
 alias a="ack --color"
 
@@ -62,3 +65,6 @@ alias mcist="mvn clean install -Dmaven.test.skip=true"
 
 # intelliJ idea
 alias idea="idea.sh"
+
+alias k=kubectl
+complete -F __start_kubectl k
