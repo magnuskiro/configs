@@ -186,7 +186,7 @@ bar {
 }
 
 # lock screen
-bindsym $mod+l exec --no-startup-id i3lock -c 000000 -I 60 -t -i ~/Pictures/wallpapers/space.png && sleep 1
+bindsym $mod+l exec --no-startup-id i3lock -c 000000 -I 60 -t -i ~/repos/configs/i3/space.png && sleep 1
 exec --no-startup-id "xautolock -time 5 -locker 'i3lock' -notify 30 -notifier \"notify-send -t 2000 'Locking screen in 30 seconds'\""
 
 
