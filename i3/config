@@ -98,29 +98,41 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# workspace definition
+set $ws1 "1:sound+term"
+set $ws2 "2:web/main"
+set $ws3 "3:Solidify"
+set $ws4 "4:x-term"
+set $ws5 "5:KDigital"
+set $ws6 "6:work"
+set $ws7 "7:work"
+set $ws8 "8:Slack"
+set $ws9 "9:Spotify"
+set $ws0 "0:Video/meet"
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
 
 # workspace screen assignment
-workspace 1 output eDP-1 
-workspace 2 output DP-1-2
-workspace 3 output  
-workspace 4 output DP-1-1
-workspace 5 output DP-1-2
-workspace 6 output DP-1-2
-workspace 7 output DP-1-1
-workspace 8 output DP-1-1
-workspace 9 output DP-1-1
-workspace 0 output 
+workspace $ws1 output eDP-1
+workspace $ws2 output DP-1-2
+workspace $ws3 output
+workspace $ws4 output DP-1-1
+workspace $ws5 output DP-1-2
+workspace $ws6 output DP-1-2
+workspace $ws7 output DP-1-1
+workspace $ws8 output DP-1-1
+workspace $ws9 output DP-1-1
+workspace $ws0 output
 
 
 # Navigate workspaces next / previous
@@ -134,16 +146,16 @@ workspace 0 output
 bindsym $mod+Tab workspace back_and_forth
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Ctrl+r reload
