@@ -6,8 +6,10 @@ alias l="ls -lAhoF --color --show-control-chars"
 alias ll="ls -lash --color --show-control-chars"
 alias cd..="cd .."
 
-
 alias brew="/home/linuxbrew/.linuxbrew/bin/brew"
+
+# fix brightness permissions
+alias brightness-fix="sudo chmod 777 /sys/class/backlight/intel_backlight/brightness"
 
 # ack-grep. Does the same as grep, only better.
 alias a="ack --color"
@@ -68,3 +70,6 @@ alias idea="idea.sh"
 
 alias k=kubectl
 complete -F __start_kubectl k
+
+
+alias ghoc='GIT_SSH_COMMAND="ssh -i /home/kiro/.ssh/id_rsa_github_enterprise" git'
