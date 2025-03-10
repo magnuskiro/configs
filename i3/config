@@ -100,15 +100,15 @@ bindsym $mod+a focus parent
 
 # workspace definition
 set $ws1 "1:sound+term"
-set $ws2 "2:web/main"
+set $ws2 "2:mainWeb"
 set $ws3 "3:Solidify"
 set $ws4 "4:x-term"
-set $ws5 "5:Work"
-set $ws6 "6:work"
-set $ws7 "7:work"
+set $ws5 "5:HoC"
+set $ws6 "6:code"
+set $ws7 "7:workWeb"
 set $ws8 "8:Slack"
 set $ws9 "9:Spotify"
-set $ws0 "10"
+set $ws0 "10:meet"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -197,9 +197,10 @@ bar {
 }
 
 # lock screen
-bindsym $mod+l exec --no-startup-id i3lock -c 000000 -I 60 -t -i ~/repos/configs/i3/space.png && sleep 1
-exec --no-startup-id "xautolock -time 5 -locker 'i3lock' -notify 30 -notifier \"notify-send -t 2000 'Locking screen in 30 seconds'\""
+bindsym $mod+l exec --no-startup-id i3lock -c 000000 -t -i ~/repos/configs/i3/space.png && sleep 1
 
+#exec --no-startup-id "xautolock -time 2 -locker 'i3lock' -notify 30 -notifier \"notify-send -t 2000 'Locking screen in 30 seconds'\""
+#exec --no-startup-id "pidof xautolock || xautolock -time 10 -locker 'i3lock -c 000000 -i ~/repos/configs/i3/space.png'" 
 
 ###
 # sound control: up | down | mute
@@ -269,4 +270,3 @@ exec --no-startup-id "pidof slack || slack" # slack chat client
 
 exec pavucontrol
 exec google-chrome
-
