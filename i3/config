@@ -270,3 +270,5 @@ exec --no-startup-id "pidof slack || slack" # slack chat client
 
 exec pavucontrol
 exec google-chrome
+exec 1password
+exec blueman-applet
